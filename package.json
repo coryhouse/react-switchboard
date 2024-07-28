@@ -1,0 +1,34 @@
+{
+  "name": "react-switchboard",
+  "version": "0.0.1",
+  "description": "Quickly create custom devtools for your React app",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsup",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coryhouse/react-switchboard.git"
+  },
+  "keywords": [
+    "react",
+    "devtools",
+    "reusable",
+    "component",
+    "toolkit"
+  ],
+  "author": "Cory House",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coryhouse/react-switchboard/issues"
+  },
+  "homepage": "https://github.com/coryhouse/react-switchboard#readme",
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "tsup": "^8.2.3"
+  },
+  "dependencies": {
+    "react": "^18.3.1"
+  }
+}
