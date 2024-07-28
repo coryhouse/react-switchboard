@@ -1,4 +1,4 @@
-import React, { useState, useRef, ComponentType } from "react";
+import { useState, useRef } from "react";
 import useKeypress from "react-use-keypress";
 import useOutsideClick from "./useOutsideClick";
 import { buildUrl } from "./urlUtils";
@@ -12,7 +12,6 @@ import {
 import { writeToClipboard } from "./clipboardUtils";
 import { useDevToolsState } from "./useDevToolsState";
 import { useWorker } from "./useWorker";
-import { FallbackProps } from "react-error-boundary";
 
 const maxUrlLength = 2000;
 
@@ -28,14 +27,7 @@ interface KeyboardShortcut {
   ctrl?: boolean;
 }
 
-/** Render devtools, and render your app as a child */
-interface DevToolsProps<TCustomSettings> {
-  /** The app to render */
-  appSlot: React.ReactNode;
-
-  /** CSS to apply to the root element. */
-  className?: string;
-
+export interface UseSwitchboardArgs<TCustomSettings> {
   /** Values for custom settings specified by the user. These values are passed to the mock API. */
   customSettings: TCustomSettings;
 
@@ -47,25 +39,15 @@ interface DevToolsProps<TCustomSettings> {
 
   /** Specify a keyboard shortcut that toggles the window open/closed */
   openKeyboardShortcut?: KeyboardShortcut;
-
-  /** Optional custom content and settings to render inside the devtools */
-  children?: React.ReactNode;
-
-  /** Component to render when an error occurs in the app root. **/
-  ErrorFallback: ComponentType<FallbackProps>;
 }
 
 /** This component is useful to display custom devtools settings for your project */
 export default function useSwitchboard<TCustomSettings, THandler>({
-  appSlot,
-  children,
   httpSettings,
   customSettings,
   openKeyboardShortcut,
-  className,
-  ErrorFallback,
   ...rest
-}: DevToolsProps<TCustomSettings>) {
+}: UseSwitchboardArgs<TCustomSettings>) {
   // Passing an empty ref since merely invoking here to get the array so we can display the list of handlers in DevTools.
   const requestHandlers = httpSettings.requestHandlers(useRef());
 
@@ -181,6 +163,12 @@ export default function useSwitchboard<TCustomSettings, THandler>({
     setPosition,
     isReady,
     hasAppBehaviorChanges,
+    closeViaOutsideClick,
+    setCloseViaOutsideClick,
+    closeViaEscapeKey,
+    setCloseViaEscapeKey,
     copyDevToolsSettingsUrlToClipboard,
+    customResponses,
+    setCustomResponses,
   };
 }
