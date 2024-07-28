@@ -46,10 +46,9 @@ export type DevToolsStateOptions = {
  * So, in other words, if the URL isn't provided, it falls back to localStorage.
  * If localStorage isn't set, it falls back to the specified default.
  *
- * This hook writes each state change to 3 spots:
- * 1. URL (so the URL can be copy/pasted for sharing the settings with others)
- * 2. localStorage (so settings persist after the tab is closed)
- * 3. local state variable (so React re-renders the devtools)
+ * This hook writes each state change to 2 spots:
+ * 1. localStorage (so settings persist after the tab is closed)
+ * 2. local state variable (so React re-renders the devtools)
  *
  *
  * @param key The URL param to check for the default, as well as the key used to write the value to localStorage
@@ -133,7 +132,7 @@ export function useDevToolsState<T>(
         //   window.history.pushState("", "DevTools state update", newUrl);
         // }
 
-        // Step 3: Save to local storage, so the settings persist after the window is closed
+        // Step 3: Save to localStorage, so the settings persist after the window is closed
         if (typeof window !== "undefined") {
           // If the value is the initial value, then we can omit it from localStorage.
           // But, go ahead and put it in localStorage anyway if storeDefaultValuesInLocalStorage is true.
