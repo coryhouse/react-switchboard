@@ -42,7 +42,7 @@ export interface UseSwitchboardArgs<TCustomSettings> {
 }
 
 /** This component is useful to display custom devtools settings for your project */
-export default function useSwitchboard<TCustomSettings, THandler>({
+export function useSwitchboard<TCustomSettings, THandler>({
   httpSettings,
   customSettings,
   openKeyboardShortcut,
@@ -162,6 +162,8 @@ export default function useSwitchboard<TCustomSettings, THandler>({
     position,
     setPosition,
     isReady,
+    openByDefault,
+    setOpenByDefault,
     hasAppBehaviorChanges,
     closeViaOutsideClick,
     setCloseViaOutsideClick,

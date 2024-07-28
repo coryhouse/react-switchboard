@@ -1,7 +1,7 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig((options) => ({
-  entry: ["src/useDevToolsState.ts", "src/useSwitchboard.ts"],
+  entry: ["src/index.ts"],
   clean: true,
   format: ["cjs", "esm"],
   dts: true,
