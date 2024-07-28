@@ -2,10 +2,22 @@
   "name": "react-switchboard",
   "version": "0.0.1",
   "description": "Quickly create custom devtools for your React app",
-  "main": "index.js",
   "scripts": {
     "build": "tsup",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm run build"
+  },
+  "exports": {
+    "./useSwitchboard": {
+      "types": "./src/useSwitchboard.ts",
+      "import": "./dist/useSwitchboard.mjs",
+      "require": "./dist/useSwitchboard.js"
+    },
+    "./useDevToolsState": {
+      "types": "./src/useDevToolsState.ts",
+      "import": "./dist/useDevToolsState.mjs",
+      "require": "./dist/useDevToolsState.js"
+    }
   },
   "repository": {
     "type": "git",
@@ -26,9 +38,13 @@
   "homepage": "https://github.com/coryhouse/react-switchboard#readme",
   "devDependencies": {
     "@types/react": "^18.3.3",
-    "tsup": "^8.2.3"
+    "tsup": "^8.2.3",
+    "typescript": "^5.5.4"
   },
   "dependencies": {
-    "react": "^18.3.1"
+    "msw": "^2.3.4",
+    "react": "^18.3.1",
+    "react-error-boundary": "^4.0.13",
+    "react-use-keypress": "^1.3.1"
   }
 }
