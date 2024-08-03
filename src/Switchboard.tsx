@@ -13,13 +13,13 @@ import {
   DevToolsDefaults,
   DevToolsConfigBase,
 } from "./types/types";
-import { useSwitchboard } from "react-switchboard";
 import Input from "./components/Input";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 import HttpSettingForm from "./components/CustomResponseForm";
 import CopySettingsButton from "./components/CopySettingsButton";
 import { Handler } from "./demo-app/demo-app-types";
 import GeneralSettings from "./GeneralSettings";
+import { useSwitchboard } from "./useSwitchboard";
 
 export const customResponseDefaults = {
   delay: 0,
