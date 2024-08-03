@@ -1,13 +1,11 @@
-# react-switchboard
+# React Switchboard 🎛
 
-Quickly create custom devtools for your React app
+Quickly create custom DevTools for your React app.
+
+[Demo](https://switchboard-beta.vercel.app/) 🚀
 
 ## Quick Start
 
 ```
 npm install react-switchboard
 ```
-
-## Example
-
-Coming soon.

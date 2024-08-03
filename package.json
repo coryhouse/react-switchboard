@@ -1,6 +1,6 @@
 {
   "name": "react-switchboard",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A toolkit to quickly create custom developer tools for your React app",
   "scripts": {
     "build": "tsup",
