@@ -29,13 +29,13 @@ interface KeyboardShortcut {
 
 export interface UseSwitchboardArgs<TCustomSettings> {
   /** Values for custom settings specified by the user. These values are passed to the mock API. */
-  customSettings: TCustomSettings;
+  customSettings?: TCustomSettings;
 
   /** Specify optional default values for various settings */
   defaults?: Partial<DevToolsDefaults>;
 
   /** HTTP settings for mock APIs and HTTP delays */
-  httpSettings: HttpSettings;
+  httpSettings?: HttpSettings;
 
   /** Specify a keyboard shortcut that toggles the window open/closed */
   openKeyboardShortcut?: KeyboardShortcut;
@@ -49,7 +49,7 @@ export function useSwitchboard<TCustomSettings, THandler>({
   ...rest
 }: UseSwitchboardArgs<TCustomSettings>) {
   // Passing an empty ref since merely invoking here to get the array so we can display the list of handlers in DevTools.
-  const requestHandlers = httpSettings.requestHandlers(useRef());
+  // const requestHandlers = httpSettings.requestHandlers(useRef());
 
   const defaults = getDefaults();
   // These settings use the useDevToolsState hook so that the settings persist in localStorage and are optionally initialized via the URL
@@ -80,9 +80,9 @@ export function useSwitchboard<TCustomSettings, THandler>({
     defaults.position
   );
 
-  const [customResponses, setCustomResponses] = useDevToolsState<
-    CustomResponse<THandler>[]
-  >("customResponses", []);
+  // const [customResponses, setCustomResponses] = useDevToolsState<
+  //   CustomResponse<THandler>[]
+  // >("customResponses", []);
 
   const devToolsWindowRef = useRef<HTMLDivElement>(null);
 
@@ -122,7 +122,7 @@ export function useSwitchboard<TCustomSettings, THandler>({
       urlConfig.openByDefault = openByDefault;
     }
     if (defaults.delay != delay) urlConfig.delay = delay;
-    if (customResponses.length > 0) urlConfig.customResponses = customResponses;
+    // if (customResponses.length > 0) urlConfig.customResponses = customResponses;
     return urlConfig;
   }
 
@@ -144,14 +144,13 @@ export function useSwitchboard<TCustomSettings, THandler>({
     }
   }
 
-  const isReady = useWorker(httpSettings, {
-    delay,
-    customResponses,
-    ...customSettings,
-  });
+  // const isReady = useWorker(httpSettings, {
+  //   delay,
+  //   // customResponses,
+  //   ...customSettings,
+  // });
 
-  const hasAppBehaviorChanges =
-    delay !== defaults.delay || customResponses.length > 0;
+  const hasAppBehaviorChanges = delay !== defaults.delay; // || customResponses.length > 0;
 
   return {
     isOpen,
@@ -161,7 +160,7 @@ export function useSwitchboard<TCustomSettings, THandler>({
     delayChanged,
     position,
     setPosition,
-    isReady,
+    // isReady,
     openByDefault,
     setOpenByDefault,
     hasAppBehaviorChanges,
@@ -170,7 +169,9 @@ export function useSwitchboard<TCustomSettings, THandler>({
     closeViaEscapeKey,
     setCloseViaEscapeKey,
     copyDevToolsSettingsUrlToClipboard,
-    customResponses,
-    setCustomResponses,
+    // customResponses,
+    // setCustomResponses,
+    // requestHandlers,
+    devToolsWindowRef,
   };
 }
