@@ -1,7 +1,7 @@
 {
   "name": "react-switchboard",
-  "version": "0.0.9",
-  "description": "Quickly create custom devtools for your React app",
+  "version": "0.0.1",
+  "description": "A toolkit to quickly create custom developer tools for your React app",
   "scripts": {
     "build": "tsup",
     "test": "echo \"Error: no test specified\" && exit 1",
