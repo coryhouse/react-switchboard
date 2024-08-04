@@ -15,16 +15,7 @@ export type CustomResponse = {
   response?: string;
 };
 
-/** Base type for RequestHandler config */
-export interface RequestHandlerConfig {
-  /** Global HTTP delay */
-  delay: number;
-
-  /** Array of custom responses */
-  customResponses: CustomResponse[];
-}
-
-export type HttpSettings = {
+export type MswSettings = {
   /** A function that accepts custom settings and returns an array of Mock Service Worker request handlers */
   // TODO: Eliminate any use here.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -32,4 +23,10 @@ export type HttpSettings = {
 
   /** Optional Mock Service worker start options */
   startOptions?: StartOptions;
+
+  /** Global delay in milliseconds */
+  delay: number;
+
+  /** Array of custom responses */
+  customResponses: CustomResponse[];
 };
