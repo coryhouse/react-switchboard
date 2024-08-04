@@ -86,7 +86,7 @@ export function Switchboard({
             />
             {children}
 
-            {httpSettings && <Http httpSettings={httpSettings} />}
+            {httpSettings && <Http mswSettings={httpSettings} />}
             <GeneralSettings />
           </>
         ) : (
