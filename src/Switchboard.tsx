@@ -31,8 +31,8 @@ interface SwitchboardProps {
   /** Specify optional default values for various settings */
   defaults?: Partial<SwitchboardDefaults>;
 
-  /** HTTP settings for mock APIs and HTTP delays */
-  httpSettings?: HttpSettings;
+  /** Configure Mock Service Worker for mock APIs and HTTP delays */
+  httpSettings?: MswSettings;
 
   /** Specify a keyboard shortcut that toggles the window open/closed */
   openKeyboardShortcut?: KeyboardShortcut;
