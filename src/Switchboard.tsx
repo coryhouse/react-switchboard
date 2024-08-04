@@ -52,8 +52,12 @@ export function Switchboard({
   openKeyboardShortcut,
   ErrorFallback,
   className,
+  defaults,
 }: SwitchboardProps) {
-  const { isOpen, setIsOpen, position, devToolsWindowRef } = useSwitchboard({});
+  const { isOpen, setIsOpen, position, devToolsWindowRef } = useSwitchboard({
+    openKeyboardShortcut,
+    overriddenDefaults: defaults,
+  });
 
   // TODO: Reimplement
   const hasAppBehaviorChanges = false;
