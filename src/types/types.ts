@@ -21,8 +21,8 @@ export const devToolsPositions = [
 /** Union of devTools positions. */
 export type DevToolsPosition = (typeof devToolsPositions)[number];
 
-/** Represents setting defaults */
-export type DevToolsDefaults = {
+/** Setting defaults */
+export type SwitchboardDefaults = {
   /** Set to true to enable closing DevTools by clicking outside the DevTools window by default */
   closeViaOutsideClick: boolean;
 
