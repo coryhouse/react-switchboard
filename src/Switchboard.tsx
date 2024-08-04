@@ -2,11 +2,12 @@ import React, { ComponentType } from "react";
 import cx from "clsx";
 import CloseButton from "./components/CloseButton";
 import OpenButton from "./components/OpenButton";
-import { HttpSettings, SwitchboardDefaults } from "./types/types";
+import { SwitchboardDefaults } from "./switchboard.types";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 import GeneralSettings from "./GeneralSettings";
 import { useSwitchboard } from "./useSwitchboard";
 import { Http } from "./Http";
+import { HttpSettings } from "./http.types";
 
 export const customResponseDefaults = {
   delay: 0,
