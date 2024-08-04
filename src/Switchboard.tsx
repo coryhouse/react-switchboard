@@ -1,24 +1,12 @@
 import React, { ComponentType } from "react";
-import Button from "./components/Button";
 import cx from "clsx";
 import CloseButton from "./components/CloseButton";
 import OpenButton from "./components/OpenButton";
-import Checkbox from "./components/Checkbox";
-import Select from "./components/Select";
-import Field from "./components/Field";
-import {
-  CustomResponse,
-  HttpSettings,
-  DevToolsPosition,
-  DevToolsDefaults,
-  DevToolsConfigBase,
-} from "./types/types";
-import Input from "./components/Input";
+import { HttpSettings, DevToolsDefaults } from "./types/types";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
-import HttpSettingForm from "./components/CustomResponseForm";
-import CopySettingsButton from "./components/CopySettingsButton";
 import GeneralSettings from "./GeneralSettings";
 import { useSwitchboard } from "./useSwitchboard";
+import { Http } from "./Http";
 
 export const customResponseDefaults = {
   delay: 0,
@@ -68,9 +56,6 @@ export function Switchboard({
   const {
     isOpen,
     setIsOpen,
-    delayChanged,
-    delay,
-    setDelay,
     position,
     // customResponses,
     // setCustomResponses,
@@ -88,7 +73,6 @@ export function Switchboard({
 
       <section
         ref={devToolsWindowRef}
-        // TODO: Support drag and drop position and resizing.
         className={cx(
           "fixed p-4 border shadow-xl max-h-screen overflow-auto bg-white opacity-90",
           {
@@ -112,63 +96,7 @@ export function Switchboard({
             </div>
             {children}
 
-            <details open>
-              <summary className="mt-4 font-bold">HTTP</summary>
-              <Field>
-                <Input
-                  id="globalDelay"
-                  width="full"
-                  changed={delayChanged}
-                  type="number"
-                  label="Global Delay"
-                  value={delay}
-                  onChange={(e) => setDelay(parseInt(e.target.value))}
-                />
-              </Field>
-
-              {/* <Field>
-                <Select
-                  width="full"
-                  label="Customize Request Handler"
-                  // Value need not change since the selected value disappears once selected.
-                  value=""
-                  onChange={(e) => {
-                    setCustomResponses([
-                      ...customResponses,
-                      {
-                        handler: e.target.value as Handler,
-                        delay: customResponseDefaults.delay,
-                        status: customResponseDefaults.status,
-                        response: customResponseDefaults.response,
-                      },
-                    ]);
-                  }}
-                >
-                  <option>Select Handler</option>
-                  {requestHandlers
-                    // Filter out handlers that are already customized
-                    .filter(
-                      (rh) =>
-                        !customResponses.some(
-                          (r) => r.handler === rh.info.header
-                        )
-                    )
-                    .sort((a, b) => a.info.header.localeCompare(b.info.header))
-                    .map((rh) => (
-                      <option key={rh.info.header}>{rh.info.header}</option>
-                    ))}
-                </Select>
-              </Field> */}
-
-              {/* {customResponses.map((setting) => (
-                <HttpSettingForm
-                  key={setting.handler}
-                  customResponse={setting}
-                  setCustomResponses={setCustomResponses}
-                />
-              ))} */}
-            </details>
-
+            <Http />
             <GeneralSettings />
           </>
         ) : (
