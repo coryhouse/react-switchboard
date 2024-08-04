@@ -7,7 +7,7 @@ import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 import GeneralSettings from "./GeneralSettings";
 import { useSwitchboard } from "./useSwitchboard";
 import { Http } from "./Http";
-import { HttpSettings } from "./http.types";
+import { MswSettings } from "./http.types";
 
 export const customResponseDefaults = {
   delay: 0,
