@@ -39,7 +39,7 @@ export type SwitchboardDefaults = {
   openByDefault: boolean;
 };
 
-export interface DevToolsConfigBase<THandler> {
+export interface DevToolsConfigBase {
   /** Set to true to open the DevTools window by default */
   openByDefault: boolean;
 
@@ -50,12 +50,12 @@ export interface DevToolsConfigBase<THandler> {
   delay: number;
 
   /** Array of custom responses */
-  customResponses: CustomResponse<THandler>[];
+  customResponses: CustomResponse[];
 }
 
-export type CustomResponse<THandler> = {
+export type CustomResponse = {
   /** Response handler name */
-  handler: THandler;
+  handler: string;
 
   /** Delay the response by a specified number of milliseconds. */
   delay?: number;
@@ -68,10 +68,10 @@ export type CustomResponse<THandler> = {
 };
 
 /** Base type for RequestHandler config */
-export interface RequestHandlerConfigBase<THandler> {
+export interface RequestHandlerConfigBase {
   /** Global HTTP delay */
   delay: number;
 
   /** Array of custom responses */
-  customResponses: CustomResponse<THandler>[];
+  customResponses: CustomResponse[];
 }

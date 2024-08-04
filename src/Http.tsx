@@ -44,7 +44,7 @@ export function Http({ httpSettings }: HttpProps) {
             setCustomResponses([
               ...customResponses,
               {
-                handler: e.target.value as Handler,
+                handler: e.target.value,
                 delay: httpDefaults.delay,
                 status: httpDefaults.status,
                 response: httpDefaults.response,
