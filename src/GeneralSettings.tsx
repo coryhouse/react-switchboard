@@ -4,7 +4,7 @@ import Select from "./components/Select";
 import CopySettingsButton from "./components/CopySettingsButton";
 import Button from "./components/Button";
 import { useSwitchboard } from "./useSwitchboard";
-import { DevToolsPosition } from "./types/types";
+import { DevToolsPosition } from "./switchboard.types";
 import Checkbox from "./components/Checkbox";
 
 export default function GeneralSettings() {
