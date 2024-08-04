@@ -84,8 +84,7 @@ export function useSwitchboard({
     if (closeViaOutsideClick) setIsOpen(false);
   });
 
-  // Only copy settings to the URL that have been changed from the default.
-  // This keeps the URL as short as possible.
+  // Only copy settings to the URL that have been changed from the default. This keeps the URL as short as possible.
   function getChangedSettings() {
     const urlConfig: Partial<DevToolsConfigBase<THandler>> = {};
     if (defaults.position !== position) urlConfig.position = position;
