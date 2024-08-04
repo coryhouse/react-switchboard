@@ -5,7 +5,7 @@ import {
   DevToolsPosition,
   SwitchboardDefaults,
   DevToolsConfigBase,
-} from "./types/types";
+} from "./switchboard.types";
 import { writeToClipboard } from "./clipboardUtils";
 import { useDevToolsState } from "./useDevToolsState";
 
@@ -112,7 +112,7 @@ export function useSwitchboard({
     const urlConfig = getChangedSettings();
     const url = buildUrl(window.location.href, {
       ...urlConfig,
-      ...customSettings,
+      //...customSettings, TODO: // Add support
     });
     try {
       await writeToClipboard(url);
