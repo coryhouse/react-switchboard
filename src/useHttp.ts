@@ -9,10 +9,12 @@ export const httpDefaults = {
   response: undefined,
 };
 
-export function useHttp<THandler, TCustomSettings>(
+/** Configure msw */
+export function useHttp<TCustomSettings>(
   httpSettings: HttpSettings,
   config: TCustomSettings
 ) {
+  // TODO: Move to URL?
   const [delay, setDelay, delayChanged] = useDevToolsState(
     "delay",
     httpDefaults.delay
@@ -25,7 +27,7 @@ export function useHttp<THandler, TCustomSettings>(
   const requestHandlers = httpSettings.requestHandlers(useRef());
 
   const [customResponses, setCustomResponses] = useDevToolsState<
-    CustomResponse<THandler>[]
+    CustomResponse[]
   >("customResponses", []);
 
   // Store the config in a ref so the useEffect below that starts
