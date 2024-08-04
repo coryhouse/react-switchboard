@@ -1,5 +1,5 @@
+import { CustomResponse } from "../http.types";
 import { customResponseDefaults } from "../Switchboard";
-import { CustomResponse } from "../types/types";
 import DeleteButton from "./DeleteButton";
 import Input from "./Input";
 
@@ -8,7 +8,7 @@ type CustomResponseFormProps = {
   setCustomResponses: React.Dispatch<React.SetStateAction<CustomResponse[]>>;
 };
 
-export default function CustomResponseForm({
+export default function HttpCustomResponseForm({
   customResponse,
   setCustomResponses,
 }: CustomResponseFormProps) {

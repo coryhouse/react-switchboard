@@ -1,4 +1,4 @@
-import CustomResponseForm from "./components/CustomResponseForm";
+import HttpCustomResponseForm from "./components/HttpCustomResponseForm";
 import Field from "./components/Field";
 import Input from "./components/Input";
 import Select from "./components/Select";
@@ -66,7 +66,7 @@ export function Http({ httpSettings }: HttpProps) {
       </Field>
 
       {customResponses.map((setting) => (
-        <CustomResponseForm
+        <HttpCustomResponseForm
           key={setting.handler}
           customResponse={setting}
           setCustomResponses={setCustomResponses}
