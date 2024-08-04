@@ -30,6 +30,7 @@ export type DevToolsStateOptions = {
 /**
  * This hook makes it easy to declare state for devtools.
  * It's a fork of https://usehooks.com/useLocalStorage/,
+ * // TODO: Consider forking alternative localStorage hook that uses useSyncExternalStore
  * but enhanced to read the URL as a way to override the specified default.
  * Since devtools often benefit from being initialized via the URL,
  * it reads the default value from the URL. And since it's handy
