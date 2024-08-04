@@ -84,7 +84,7 @@ export function useDevToolsState<T>(
       return parsedObject;
     }
 
-    // If URL doesn't contain the key, then fallback to checking localStorage for a default value
+    // If URL doesn't contain the key, then fall back to checking localStorage for a default value
     try {
       // Get from local storage by key
       const item = window.localStorage.getItem(key);
@@ -110,29 +110,7 @@ export function useDevToolsState<T>(
         // Step 1: Save state, so React re-renders
         setStoredValue(valueToStore);
 
-        // TODO: Reenable as an optional feature.
-        // Disabling writing settings to the URL for now. It likely isn't a good default behavior anyway because it muddies the URL at all times for the small benefit of sharing settings without needing to click a button.
-        // And actually, clicking the button to add to the clipboard is actually a single click, so plenty easy.
-
-        // Step 2: Update the URL so it reflects the new setting, and can thus be copied and shared with others
-        // If the value matches the default value, then remove it from the URL (to keep the URL as lean as possible).
-        // However, go ahead and put the value in the URL anyway if showDefaultValuesInTheUrl is true.
-        // if (valueToStore == defaultValue && !options?.showDefaultValuesInTheUrl) {
-        //   const newUrl = getUrlWithUpdatedQuery(
-        //     new URL(window.location.href),
-        //     key
-        //   );
-        //   window.history.pushState("", "DevTools state update", newUrl);
-        // } else {
-        //   const newUrl = getUrlWithUpdatedQuery(
-        //     new URL(window.location.href),
-        //     key,
-        //     valueToStore
-        //   );
-        //   window.history.pushState("", "DevTools state update", newUrl);
-        // }
-
-        // Step 3: Save to localStorage, so the settings persist after the window is closed
+        // Step 2: Save to localStorage, so the settings persist after the window is closed
         if (typeof window !== "undefined") {
           // If the value is the initial value, then we can omit it from localStorage.
           // But, go ahead and put it in localStorage anyway if storeDefaultValuesInLocalStorage is true.
