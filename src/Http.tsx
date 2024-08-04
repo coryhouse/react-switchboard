@@ -2,7 +2,7 @@ import CustomResponseForm from "./components/CustomResponseForm";
 import Field from "./components/Field";
 import Input from "./components/Input";
 import Select from "./components/Select";
-import { HttpSettings } from "./types/types";
+import { HttpSettings } from "./http.types";
 import { httpDefaults, useHttp } from "./useHttp";
 
 type HttpProps = {
