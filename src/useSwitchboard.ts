@@ -3,23 +3,14 @@ import useKeypress from "react-use-keypress";
 import useOutsideClick from "./useOutsideClick";
 import { buildUrl } from "./urlUtils";
 import {
-  CustomResponse,
-  HttpSettings,
   DevToolsPosition,
   DevToolsDefaults,
   DevToolsConfigBase,
 } from "./types/types";
 import { writeToClipboard } from "./clipboardUtils";
 import { useDevToolsState } from "./useDevToolsState";
-import { useWorker } from "./useWorker";
 
 const maxUrlLength = 2000;
-
-export const customResponseDefaults = {
-  delay: 0,
-  status: 200,
-  response: undefined,
-};
 
 interface KeyboardShortcut {
   key: string | string[];
@@ -27,30 +18,19 @@ interface KeyboardShortcut {
   ctrl?: boolean;
 }
 
-export interface UseSwitchboardArgs<TCustomSettings> {
-  /** Values for custom settings specified by the user. These values are passed to the mock API. */
-  customSettings?: TCustomSettings;
-
-  /** Specify optional default values for various settings */
+export interface UseSwitchboardArgs {
+  /** Override the built in setting defaults */
   defaults?: Partial<DevToolsDefaults>;
-
-  /** HTTP settings for mock APIs and HTTP delays */
-  httpSettings?: HttpSettings;
 
   /** Specify a keyboard shortcut that toggles the window open/closed */
   openKeyboardShortcut?: KeyboardShortcut;
 }
 
 /** This component is useful to display custom devtools settings for your project */
-export function useSwitchboard<TCustomSettings, THandler>({
-  httpSettings,
-  customSettings,
+export function useSwitchboard({
   openKeyboardShortcut,
   ...rest
-}: UseSwitchboardArgs<TCustomSettings>) {
-  // Passing an empty ref since merely invoking here to get the array so we can display the list of handlers in DevTools.
-  // const requestHandlers = httpSettings.requestHandlers(useRef());
-
+}: UseSwitchboardArgs) {
   const defaults = getDefaults();
   // These settings use the useDevToolsState hook so that the settings persist in localStorage and are optionally initialized via the URL
   const [openByDefault, setOpenByDefault] = useDevToolsState(
@@ -70,19 +50,10 @@ export function useSwitchboard<TCustomSettings, THandler>({
     defaults.closeViaEscapeKey
   );
 
-  const [delay, setDelay, delayChanged] = useDevToolsState(
-    "delay",
-    defaults.delay
-  );
-
   const [position, setPosition] = useDevToolsState<DevToolsPosition>(
     "position",
     defaults.position
   );
-
-  // const [customResponses, setCustomResponses] = useDevToolsState<
-  //   CustomResponse<THandler>[]
-  // >("customResponses", []);
 
   const devToolsWindowRef = useRef<HTMLDivElement>(null);
 
@@ -144,23 +115,13 @@ export function useSwitchboard<TCustomSettings, THandler>({
     }
   }
 
-  // const isReady = useWorker(httpSettings, {
-  //   delay,
-  //   // customResponses,
-  //   ...customSettings,
-  // });
-
   const hasAppBehaviorChanges = delay !== defaults.delay; // || customResponses.length > 0;
 
   return {
     isOpen,
     setIsOpen,
-    delay,
-    setDelay,
-    delayChanged,
     position,
     setPosition,
-    // isReady,
     openByDefault,
     setOpenByDefault,
     hasAppBehaviorChanges,
@@ -169,9 +130,6 @@ export function useSwitchboard<TCustomSettings, THandler>({
     closeViaEscapeKey,
     setCloseViaEscapeKey,
     copyDevToolsSettingsUrlToClipboard,
-    // customResponses,
-    // setCustomResponses,
-    // requestHandlers,
     devToolsWindowRef,
   };
 }
