@@ -2,9 +2,9 @@ import { useState, useRef } from "react";
 import useKeypress from "react-use-keypress";
 import useOutsideClick from "./useOutsideClick";
 import {
-  DevToolsPosition,
+  Position,
   SwitchboardDefaults,
-  DevToolsConfigBase,
+  SwitchboardConfig,
 } from "./switchboard.types";
 import { writeToClipboard } from "./clipboardUtils";
 import { useDevToolsState } from "./useDevToolsState";
@@ -49,7 +49,7 @@ export function useSwitchboard({
     defaults.closeViaEscapeKey
   );
 
-  const [position, setPosition] = useDevToolsState<DevToolsPosition>(
+  const [position, setPosition] = useDevToolsState<Position>(
     "position",
     defaults.position
   );
@@ -84,7 +84,7 @@ export function useSwitchboard({
 
   // Only copy settings to the URL that have been changed from the default. This keeps the URL as short as possible.
   function getChangedSettings() {
-    const urlConfig: Partial<DevToolsConfigBase> = {};
+    const urlConfig: Partial<SwitchboardConfig> = {};
     if (defaults.position !== position) urlConfig.position = position;
     if (defaults.openByDefault !== openByDefault) {
       urlConfig.openByDefault = openByDefault;

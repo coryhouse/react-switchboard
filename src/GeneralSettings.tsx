@@ -4,7 +4,7 @@ import Select from "./components/Select";
 import CopySettingsButton from "./components/CopySettingsButton";
 import Button from "./components/Button";
 import { useSwitchboard } from "./useSwitchboard";
-import { DevToolsPosition } from "./switchboard.types";
+import { Position } from "./switchboard.types";
 import Checkbox from "./components/Checkbox";
 
 export default function GeneralSettings() {
@@ -29,7 +29,7 @@ export default function GeneralSettings() {
           width="full"
           label="Position"
           value={position}
-          onChange={(e) => setPosition(e.target.value as DevToolsPosition)}
+          onChange={(e) => setPosition(e.target.value as Position)}
         >
           <option value="top-left">Top left</option>
           <option value="top-right">Top Right</option>

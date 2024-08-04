@@ -1,39 +1,39 @@
 import { CustomResponse } from "./http.types";
 
-export const devToolsPositions = [
+export const Positions = [
   "top-left",
   "top-right",
   "bottom-left",
   "bottom-right",
 ] as const;
 
-/** Union of devTools positions. */
-export type DevToolsPosition = (typeof devToolsPositions)[number];
+/** Union of window positions */
+export type Position = (typeof Positions)[number];
 
 /** Setting defaults */
 export type SwitchboardDefaults = {
-  /** Set to true to enable closing DevTools by clicking outside the DevTools window by default */
+  /** Set to true to enable closing Switchboard by clicking outside the window by default */
   closeViaOutsideClick: boolean;
 
-  /** When true, close the devtools window when the escape key is pressed */
+  /** When true, close Switchboard when the escape key is pressed */
   closeViaEscapeKey?: boolean;
 
   /** The default delay for mock HTTP requests */
   delay: number;
 
-  /** The default DevTools window position */
-  position: DevToolsPosition;
+  /** The default window position */
+  position: Position;
 
-  /** Set to true to open the DevTools window by default */
+  /** Set to true to open Switchboard by default */
   openByDefault: boolean;
 };
 
-export interface DevToolsConfigBase {
+export interface SwitchboardConfig {
   /** Set to true to open the DevTools window by default */
   openByDefault: boolean;
 
-  /** DevTools window position */
-  position: DevToolsPosition;
+  /** Switchboard window position */
+  position: Position;
 
   /** Global HTTP delay */
   delay: number;
