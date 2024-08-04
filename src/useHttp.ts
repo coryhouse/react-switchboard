@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { CustomResponse, HttpSettings } from "./types/types";
 import { useDevToolsState } from "./useDevToolsState";
 import { SetupWorker, setupWorker } from "msw/browser";
+import { CustomResponse, HttpSettings } from "./http.types";
 
 export const httpDefaults = {
   delay: 0,
