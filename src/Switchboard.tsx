@@ -31,7 +31,7 @@ interface SwitchboardProps {
   defaults?: Partial<SwitchboardDefaults>;
 
   /** HTTP settings for mock APIs and HTTP delays */
-  httpSettings: HttpSettings;
+  httpSettings?: HttpSettings;
 
   /** Specify a keyboard shortcut that toggles the window open/closed */
   openKeyboardShortcut?: KeyboardShortcut;
@@ -94,7 +94,7 @@ export function Switchboard({
               />
             {children}
 
-            <Http />
+            {httpSettings && <Http httpSettings={httpSettings} />}
             <GeneralSettings />
           </>
         ) : (
