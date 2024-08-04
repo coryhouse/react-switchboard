@@ -4,7 +4,7 @@ import useOutsideClick from "./useOutsideClick";
 import { buildUrl } from "./urlUtils";
 import {
   DevToolsPosition,
-  DevToolsDefaults,
+  SwitchboardDefaults,
   DevToolsConfigBase,
 } from "./types/types";
 import { writeToClipboard } from "./clipboardUtils";
@@ -20,7 +20,7 @@ interface KeyboardShortcut {
 
 export interface UseSwitchboardArgs {
   /** Override the built in setting defaults */
-  defaults?: Partial<DevToolsDefaults>;
+  defaults?: Partial<SwitchboardDefaults>;
 
   /** Specify a keyboard shortcut that toggles the window open/closed */
   openKeyboardShortcut?: KeyboardShortcut;
@@ -60,7 +60,7 @@ export function useSwitchboard({
   // Returns defaults that fallback to hard-coded defaults if the user doesn't specify a preference.
   // Note that these defaults only apply if the URL and localStorage don't specify a preference.
   function getDefaults() {
-    const defaults: DevToolsDefaults = {
+    const defaults: SwitchboardDefaults = {
       closeViaOutsideClick: rest.defaults?.closeViaOutsideClick ?? false,
       closeViaEscapeKey: rest.defaults?.closeViaEscapeKey ?? true,
       delay: rest.defaults?.delay ?? 0,
