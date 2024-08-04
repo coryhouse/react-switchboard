@@ -51,9 +51,6 @@ export interface DevToolsConfigBase<THandler> {
 
   /** Array of custom responses */
   customResponses: CustomResponse<THandler>[];
-
-  /** Set to true to automatically hard reload the app when DevTools settings change */
-  // autoReload: boolean;
 }
 
 export type CustomResponse<THandler> = {
