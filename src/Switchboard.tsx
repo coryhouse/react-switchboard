@@ -28,7 +28,7 @@ interface SwitchboardProps {
   className?: string;
 
   /** Specify optional default values for various settings */
-  defaults?: Partial<DevToolsDefaults>;
+  defaults?: Partial<SwitchboardDefaults>;
 
   /** HTTP settings for mock APIs and HTTP delays */
   httpSettings: HttpSettings;
