@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import useKeypress from "react-use-keypress";
 import useOutsideClick from "./useOutsideClick";
-import { buildUrl } from "./urlUtils";
 import {
   DevToolsPosition,
   SwitchboardDefaults,
