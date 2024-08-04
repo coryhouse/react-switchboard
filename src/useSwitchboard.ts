@@ -19,7 +19,7 @@ interface KeyboardShortcut {
 
 export interface UseSwitchboardArgs {
   /** Override the built in setting defaults */
-  defaults?: Partial<SwitchboardDefaults>;
+  overriddenDefaults?: Partial<SwitchboardDefaults>;
 
   /** Specify a keyboard shortcut that toggles the window open/closed */
   openKeyboardShortcut?: KeyboardShortcut;
@@ -28,7 +28,7 @@ export interface UseSwitchboardArgs {
 /** This component is useful to display custom devtools settings for your project */
 export function useSwitchboard({
   openKeyboardShortcut,
-  ...rest
+  overriddenDefaults,
 }: UseSwitchboardArgs) {
   const defaults = getDefaults();
   // These settings use the useDevToolsState hook so that the settings persist in localStorage and are optionally initialized via the URL
@@ -59,11 +59,11 @@ export function useSwitchboard({
   // Returns defaults that fallback to hard-coded defaults if the user doesn't specify a preference. These defaults apply if the URL and localStorage don't specify a preference.
   function getDefaults() {
     const defaults: SwitchboardDefaults = {
-      closeViaOutsideClick: rest.defaults?.closeViaOutsideClick ?? false,
-      closeViaEscapeKey: rest.defaults?.closeViaEscapeKey ?? true,
-      delay: rest.defaults?.delay ?? 0,
-      openByDefault: rest.defaults?.openByDefault ?? true,
-      position: rest.defaults?.position ?? "top-left",
+      closeViaOutsideClick: overriddenDefaults?.closeViaOutsideClick ?? false,
+      closeViaEscapeKey: overriddenDefaults?.closeViaEscapeKey ?? true,
+      delay: overriddenDefaults?.delay ?? 0,
+      openByDefault: overriddenDefaults?.openByDefault ?? true,
+      position: overriddenDefaults?.position ?? "top-left",
     };
     return defaults;
   }
