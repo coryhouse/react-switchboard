@@ -56,8 +56,7 @@ export function useSwitchboard({
 
   const devToolsWindowRef = useRef<HTMLDivElement>(null);
 
-  // Returns defaults that fallback to hard-coded defaults if the user doesn't specify a preference.
-  // Note that these defaults only apply if the URL and localStorage don't specify a preference.
+  // Returns defaults that fallback to hard-coded defaults if the user doesn't specify a preference. These defaults apply if the URL and localStorage don't specify a preference.
   function getDefaults() {
     const defaults: SwitchboardDefaults = {
       closeViaOutsideClick: rest.defaults?.closeViaOutsideClick ?? false,
@@ -125,8 +124,6 @@ export function useSwitchboard({
     }
   }
 
-  const hasAppBehaviorChanges = delay !== defaults.delay; // || customResponses.length > 0;
-
   return {
     isOpen,
     setIsOpen,
@@ -134,7 +131,6 @@ export function useSwitchboard({
     setPosition,
     openByDefault,
     setOpenByDefault,
-    hasAppBehaviorChanges,
     closeViaOutsideClick,
     setCloseViaOutsideClick,
     closeViaEscapeKey,
