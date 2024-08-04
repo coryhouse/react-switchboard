@@ -2,14 +2,14 @@ import HttpCustomResponseForm from "./components/HttpCustomResponseForm";
 import Field from "./components/Field";
 import Input from "./components/Input";
 import Select from "./components/Select";
-import { HttpSettings } from "./http.types";
+import { MswSettings } from "./http.types";
 import { httpDefaults, useHttp } from "./useHttp";
 
 type HttpProps = {
-  httpSettings: HttpSettings;
+  mswSettings: MswSettings;
 };
 
-export function Http({ httpSettings }: HttpProps) {
+export function Http({ mswSettings }: HttpProps) {
   const {
     delay,
     setDelay,
@@ -17,7 +17,7 @@ export function Http({ httpSettings }: HttpProps) {
     customResponses,
     setCustomResponses,
     requestHandlers,
-  } = useHttp(httpSettings);
+  } = useHttp(mswSettings);
 
   return (
     <details open>
