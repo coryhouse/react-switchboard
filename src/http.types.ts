@@ -16,7 +16,7 @@ export type CustomResponse = {
 };
 
 /** Base type for RequestHandler config */
-export interface RequestHandlerConfigBase {
+export interface RequestHandlerConfig {
   /** Global HTTP delay */
   delay: number;
 
