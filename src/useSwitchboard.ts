@@ -84,12 +84,14 @@ export function useSwitchboard({
 
   // Only copy settings to the URL that have been changed from the default. This keeps the URL as short as possible.
   function getChangedSettings() {
-    const urlConfig: Partial<DevToolsConfigBase<THandler>> = {};
+    const urlConfig: Partial<DevToolsConfigBase> = {};
     if (defaults.position !== position) urlConfig.position = position;
     if (defaults.openByDefault !== openByDefault) {
       urlConfig.openByDefault = openByDefault;
     }
-    if (defaults.delay != delay) urlConfig.delay = delay;
+
+    //TODO: Fix below
+    // if (defaults.delay != delay) urlConfig.delay = delay;
     // if (customResponses.length > 0) urlConfig.customResponses = customResponses;
     return urlConfig;
   }
