@@ -88,12 +88,10 @@ export function Switchboard({
       >
         {isOpen ? (
           <>
-            <div className="flex flex-row-reverse">
               <CloseButton
                 aria-label="Close DevTools"
                 onClick={() => setIsOpen(!isOpen)}
               />
-            </div>
             {children}
 
             <Http />
