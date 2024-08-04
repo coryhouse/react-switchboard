@@ -1,4 +1,4 @@
-import { customResponseDefaults } from "../DevTools";
+import { customResponseDefaults } from "../Switchboard";
 import { CustomResponse } from "../types/types";
 import DeleteButton from "./DeleteButton";
 import Input from "./Input";
