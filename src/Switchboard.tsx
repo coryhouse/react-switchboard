@@ -2,7 +2,7 @@ import React, { ComponentType } from "react";
 import cx from "clsx";
 import CloseButton from "./components/CloseButton";
 import OpenButton from "./components/OpenButton";
-import { HttpSettings, DevToolsDefaults } from "./types/types";
+import { HttpSettings, SwitchboardDefaults } from "./types/types";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 import GeneralSettings from "./GeneralSettings";
 import { useSwitchboard } from "./useSwitchboard";
@@ -60,16 +60,16 @@ export function Switchboard({
     // customResponses,
     // setCustomResponses,
     // requestHandlers,
-    hasAppBehaviorChanges,
     devToolsWindowRef,
   } = useSwitchboard({});
+
+  // TODO: Reimplement
+  const hasAppBehaviorChanges = false;
+
   return (
     <>
       {/* Wrap app in ErrorBoundary so DevTools continue to display upon error */}
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        {/* Passing a key to force the app to completely reinitialize when the userId changes. */}
-        {appSlot}
-      </ErrorBoundary>
+      <ErrorBoundary FallbackComponent={ErrorFallback}>{appSlot}</ErrorBoundary>
 
       <section
         ref={devToolsWindowRef}
@@ -88,10 +88,10 @@ export function Switchboard({
       >
         {isOpen ? (
           <>
-              <CloseButton
-                aria-label="Close DevTools"
-                onClick={() => setIsOpen(!isOpen)}
-              />
+            <CloseButton
+              aria-label="Close DevTools"
+              onClick={() => setIsOpen(!isOpen)}
+            />
             {children}
 
             {httpSettings && <Http httpSettings={httpSettings} />}
