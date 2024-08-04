@@ -52,17 +52,8 @@ export function Switchboard({
   openKeyboardShortcut,
   ErrorFallback,
   className,
-  ...rest
 }: SwitchboardProps) {
-  const {
-    isOpen,
-    setIsOpen,
-    position,
-    // customResponses,
-    // setCustomResponses,
-    // requestHandlers,
-    devToolsWindowRef,
-  } = useSwitchboard({});
+  const { isOpen, setIsOpen, position, devToolsWindowRef } = useSwitchboard({});
 
   // TODO: Reimplement
   const hasAppBehaviorChanges = false;
