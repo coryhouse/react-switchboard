@@ -1,6 +1,6 @@
 {
   "name": "react-switchboard",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "A toolkit to quickly create custom developer tools for your React app",
   "scripts": {
     "prebuild": "tailwindcss -o src/index.css",

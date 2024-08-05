@@ -4,9 +4,10 @@ import Input from "./components/Input";
 import Select from "./components/Select";
 import { MswSettings } from "./http.types";
 import { httpDefaults, useHttp } from "./useHttp";
+import { SwitchboardMswSettings } from "./Switchboard";
 
 type HttpProps = {
-  mswSettings: MswSettings;
+  mswSettings: SwitchboardMswSettings;
 };
 
 export function Http({ mswSettings }: HttpProps) {

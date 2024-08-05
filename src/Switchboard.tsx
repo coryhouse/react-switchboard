@@ -9,6 +9,8 @@ import { useSwitchboard } from "./useSwitchboard";
 import { Http } from "./Http";
 import { MswSettings } from "./http.types";
 import "./switchboard.css";
+import { RequestHandler } from "msw";
+import { StartOptions } from "msw/browser";
 
 export const customResponseDefaults = {
   delay: 0,
@@ -22,6 +24,14 @@ interface KeyboardShortcut {
   ctrl?: boolean;
 }
 
+export interface SwitchboardMswSettings {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  requestHandlers: (configRef: React.MutableRefObject<any>) => RequestHandler[];
+
+  /** Optional Mock Service worker start options */
+  startOptions?: StartOptions;
+}
+
 interface SwitchboardProps {
   /** The app to render */
   appSlot: React.ReactNode;
@@ -32,8 +42,8 @@ interface SwitchboardProps {
   /** Specify optional default values for various settings */
   defaults?: Partial<SwitchboardDefaults>;
 
-  /** Configure Mock Service Worker for mock APIs and HTTP delays */
-  httpSettings?: MswSettings;
+  /** Configure Mock Service Worker request handlers. */
+  mswSettings?: SwitchboardMswSettings;
 
   /** Specify a keyboard shortcut that toggles the window open/closed */
   openKeyboardShortcut?: KeyboardShortcut;
@@ -49,7 +59,7 @@ interface SwitchboardProps {
 export function Switchboard({
   appSlot,
   children,
-  httpSettings,
+  mswSettings,
   openKeyboardShortcut,
   ErrorFallback,
   className,
@@ -91,7 +101,7 @@ export function Switchboard({
             />
             {children}
 
-            {httpSettings && <Http mswSettings={httpSettings} />}
+            {mswSettings && <Http mswSettings={mswSettings} />}
             <GeneralSettings />
           </>
         ) : (

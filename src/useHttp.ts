@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useDevToolsState } from "./useDevToolsState";
 import { SetupWorker, setupWorker } from "msw/browser";
-import { CustomResponse, MswSettings } from "./http.types";
+import { CustomResponse } from "./http.types";
+import { SwitchboardMswSettings } from "./Switchboard";
 
 export const httpDefaults = {
   delay: 0,
@@ -10,7 +11,7 @@ export const httpDefaults = {
 };
 
 /** Configure msw */
-export function useHttp(mswSettings: MswSettings) {
+export function useHttp(mswSettings: SwitchboardMswSettings) {
   // TODO: Move to URL?
   const [delay, setDelay, delayChanged] = useDevToolsState(
     "delay",
