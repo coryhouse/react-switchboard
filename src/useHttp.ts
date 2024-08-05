@@ -11,7 +11,10 @@ export const httpDefaults = {
 };
 
 /** Configure msw */
-export function useHttp(mswSettings: SwitchboardMswSettings) {
+export function useHttp(
+  mswSettings: SwitchboardMswSettings,
+  setIsReady: () => void
+) {
   // TODO: Move to URL?
   const [delay, setDelay, delayChanged] = useDevToolsState(
     "delay",
@@ -19,7 +22,6 @@ export function useHttp(mswSettings: SwitchboardMswSettings) {
   );
 
   const configRef = useRef(mswSettings);
-  const [isReady, setIsReady] = useState(false);
 
   // Passing an empty ref since merely invoking here to get the array so we can display the list of handlers in DevTools.
   const requestHandlers = mswSettings.requestHandlers(useRef());
@@ -38,7 +40,7 @@ export function useHttp(mswSettings: SwitchboardMswSettings) {
 
     const startWorker = async (worker: SetupWorker) => {
       await worker.start(mswSettings.startOptions);
-      setIsReady(true);
+      setIsReady();
     };
 
     startWorker(worker);
@@ -47,7 +49,6 @@ export function useHttp(mswSettings: SwitchboardMswSettings) {
   }, []);
 
   return {
-    isReady,
     delay,
     setDelay,
     delayChanged,

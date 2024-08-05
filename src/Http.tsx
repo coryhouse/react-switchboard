@@ -2,15 +2,15 @@ import HttpCustomResponseForm from "./components/HttpCustomResponseForm";
 import Field from "./components/Field";
 import Input from "./components/Input";
 import Select from "./components/Select";
-import { MswSettings } from "./http.types";
 import { httpDefaults, useHttp } from "./useHttp";
 import { SwitchboardMswSettings } from "./Switchboard";
 
 type HttpProps = {
   mswSettings: SwitchboardMswSettings;
+  setIsReady: () => void;
 };
 
-export function Http({ mswSettings }: HttpProps) {
+export function Http({ mswSettings, setIsReady }: HttpProps) {
   const {
     delay,
     setDelay,
@@ -18,7 +18,7 @@ export function Http({ mswSettings }: HttpProps) {
     customResponses,
     setCustomResponses,
     requestHandlers,
-  } = useHttp(mswSettings);
+  } = useHttp(mswSettings, setIsReady);
 
   return (
     <details open>

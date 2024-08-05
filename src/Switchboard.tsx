@@ -1,4 +1,4 @@
-import React, { ComponentType } from "react";
+import React, { ComponentType, useState } from "react";
 import cx from "clsx";
 import CloseButton from "./components/CloseButton";
 import OpenButton from "./components/OpenButton";
@@ -65,6 +65,7 @@ export function Switchboard({
   className,
   defaults,
 }: SwitchboardProps) {
+  const [isReady, setIsReady] = useState(false);
   const { isOpen, setIsOpen, position, devToolsWindowRef } = useSwitchboard({
     openKeyboardShortcut,
     overriddenDefaults: defaults,
@@ -76,7 +77,9 @@ export function Switchboard({
   return (
     <>
       {/* Wrap app in ErrorBoundary so DevTools continue to display upon error */}
-      <ErrorBoundary FallbackComponent={ErrorFallback}>{appSlot}</ErrorBoundary>
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        {isReady ? appSlot : <p>Initializing msw...</p>}
+      </ErrorBoundary>
 
       <section
         ref={devToolsWindowRef}
@@ -101,7 +104,12 @@ export function Switchboard({
             />
             {children}
 
-            {mswSettings && <Http mswSettings={mswSettings} />}
+            {mswSettings && (
+              <Http
+                mswSettings={mswSettings}
+                setIsReady={() => setIsReady(true)}
+              />
+            )}
             <GeneralSettings />
           </>
         ) : (
