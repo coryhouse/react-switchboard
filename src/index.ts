@@ -3,6 +3,6 @@ import { useSwitchboard } from "./useSwitchboard";
 import { Switchboard } from "./Switchboard";
 import { Http } from "./Http";
 import { useHttp } from "./useHttp";
-import "./switchboard.css";
+import "./index.css";
 
 export { useSwitchboard, useDevToolsState, Switchboard, Http, useHttp };

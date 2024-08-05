@@ -1,6 +1,6 @@
 {
   "name": "react-switchboard",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A toolkit to quickly create custom developer tools for your React app",
   "scripts": {
     "prebuild": "tailwindcss -o src/switchboard.css",
@@ -15,7 +15,8 @@
   },
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "dist/*.css"
   ],
   "repository": {
     "type": "git",
