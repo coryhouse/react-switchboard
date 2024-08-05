@@ -11,12 +11,10 @@
   "exports": {
     "types": "./dist/index.d.ts",
     "import": [
-      "./dist/index.mjs",
-      "./dist/index.css"
+      "./dist/index.mjs"
     ],
     "require": [
-      "./dist/index.js",
-      "./dist/index.css"
+      "./dist/index.js"
     ]
   },
   "types": "./dist/index.d.ts",
