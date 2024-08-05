@@ -8,6 +8,7 @@ import GeneralSettings from "./GeneralSettings";
 import { useSwitchboard } from "./useSwitchboard";
 import { Http } from "./Http";
 import { MswSettings } from "./http.types";
+import "./switchboard.css";
 
 export const customResponseDefaults = {
   delay: 0,
