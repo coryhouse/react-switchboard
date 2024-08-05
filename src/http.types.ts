@@ -25,7 +25,7 @@ export type MswSettings = {
   startOptions?: StartOptions;
 
   /** Global delay in milliseconds */
-  delay: number;
+  delay?: number;
 
   /** Array of custom responses */
   customResponses: CustomResponse[];
