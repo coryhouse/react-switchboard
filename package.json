@@ -1,6 +1,6 @@
 {
   "name": "react-switchboard",
-  "version": "0.0.15",
+  "version": "0.0.17",
   "description": "A toolkit to quickly create custom developer tools for your React app",
   "scripts": {
     "prebuild": "tailwindcss -o src/index.css",
@@ -40,6 +40,7 @@
   "homepage": "https://github.com/coryhouse/react-switchboard#readme",
   "devDependencies": {
     "@types/react": "^18.3.3",
+    "knip": "^5.27.1",
     "tsup": "^8.2.3",
     "typescript": "^5.5.4"
   },
@@ -52,7 +53,7 @@
     "tailwindcss": "^3.4.7"
   },
   "peerDependencies": {
-    "react": "^18.0.0",
-    "msw": "2.3.4"
+    "msw": "2.3.4",
+    "react": "^18.0.0"
   }
 }
