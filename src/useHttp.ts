@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { useDevToolsState } from "./useDevToolsState";
+import { useEffect, useRef } from "react";
+import { useSwitchboardState } from "./useSwitchboardState";
 import { SetupWorker, setupWorker } from "msw/browser";
 import { CustomResponse } from "./http.types";
 import { SwitchboardMswSettings } from "./Switchboard";
@@ -16,7 +16,7 @@ export function useHttp(
   setIsReady: () => void
 ) {
   // TODO: Move to URL?
-  const [delay, setDelay, delayChanged] = useDevToolsState(
+  const [delay, setDelay, delayChanged] = useSwitchboardState(
     "delay",
     httpDefaults.delay
   );
@@ -26,7 +26,7 @@ export function useHttp(
   // Passing an empty ref since merely invoking here to get the array so we can display the list of handlers in DevTools.
   const requestHandlers = mswSettings.requestHandlers(useRef());
 
-  const [customResponses, setCustomResponses] = useDevToolsState<
+  const [customResponses, setCustomResponses] = useSwitchboardState<
     CustomResponse[]
   >("customResponses", []);
 
@@ -44,7 +44,7 @@ export function useHttp(
     };
 
     startWorker(worker);
-    // HACK: These dependencies need to be made stable
+    // TODO: Eliminate need for disable
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
