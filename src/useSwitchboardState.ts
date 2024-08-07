@@ -55,7 +55,7 @@ export type DevToolsStateOptions = {
  * @param key The URL param to check for the default, as well as the key used to write the value to localStorage
  * @param defaultValue The default value to use if the URL and localStorage both don't have a matching value for the provided key.
  * */
-export function useDevToolsState<T>(
+export function useSwitchboardState<T>(
   key: string,
   defaultValue: T,
   options?: DevToolsStateOptions
