@@ -7,7 +7,6 @@ import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 import GeneralSettings from "./GeneralSettings";
 import { useSwitchboard } from "./useSwitchboard";
 import { Http } from "./Http";
-import { MswSettings } from "./http.types";
 import "./switchboard.css";
 import { RequestHandler } from "msw";
 import { StartOptions } from "msw/browser";
