@@ -7,7 +7,7 @@ import {
   SwitchboardConfig,
 } from "./switchboard.types";
 import { writeToClipboard } from "./clipboardUtils";
-import { useDevToolsState } from "./useDevToolsState";
+import { useSwitchboardState } from "./useSwitchboardState";
 
 const maxUrlLength = 2000;
 
@@ -31,25 +31,25 @@ export function useSwitchboard({
   overriddenDefaults,
 }: UseSwitchboardArgs) {
   const defaults = getDefaults();
-  // These settings use the useDevToolsState hook so that the settings persist in localStorage and are optionally initialized via the URL
-  const [openByDefault, setOpenByDefault] = useDevToolsState(
+  // These settings use the useSwitchboardState hook so that the settings persist in localStorage and are optionally initialized via the URL
+  const [openByDefault, setOpenByDefault] = useSwitchboardState(
     "openByDefault",
     defaults.openByDefault
   );
 
   const [isOpen, setIsOpen] = useState(openByDefault);
 
-  const [closeViaOutsideClick, setCloseViaOutsideClick] = useDevToolsState(
+  const [closeViaOutsideClick, setCloseViaOutsideClick] = useSwitchboardState(
     "closeViaOutsideClick",
     defaults.closeViaOutsideClick
   );
 
-  const [closeViaEscapeKey, setCloseViaEscapeKey] = useDevToolsState(
+  const [closeViaEscapeKey, setCloseViaEscapeKey] = useSwitchboardState(
     "closeViaEscapeKey",
     defaults.closeViaEscapeKey
   );
 
-  const [position, setPosition] = useDevToolsState<Position>(
+  const [position, setPosition] = useSwitchboardState<Position>(
     "position",
     defaults.position
   );
