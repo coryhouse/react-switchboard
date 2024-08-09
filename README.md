@@ -21,3 +21,7 @@ createRoot(document.getElementById("root")!).render(
   <Switchboard appSlot={<App />} />
 );
 ```
+
+## Headless
+
+The `Switchboard` component accepts children so you can specify what it renders. If you want complete control over the UI, use the `useSwitchboard` and `useSwitchboardState` hooks instead of the `Switchboard` component.
