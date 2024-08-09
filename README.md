@@ -9,3 +9,15 @@ Quickly create custom DevTools for your React app.
 ```
 npm install react-switchboard
 ```
+
+Call `Switchboard` in your project root. Pass your app's main component to the `appSlot` prop.
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Switchboard } from "react-switchboard";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<Switchboard appSlot={<App />} />);
+```
