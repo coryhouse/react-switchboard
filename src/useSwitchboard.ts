@@ -33,24 +33,24 @@ export function useSwitchboard({
   const defaults = getDefaults();
   // These settings use the useSwitchboardState hook so that the settings persist in localStorage and are optionally initialized via the URL
   const [openByDefault, setOpenByDefault] = useSwitchboardState(
-    "openByDefault",
+    "sb-openByDefault",
     defaults.openByDefault
   );
 
   const [isOpen, setIsOpen] = useState(openByDefault);
 
   const [closeViaOutsideClick, setCloseViaOutsideClick] = useSwitchboardState(
-    "closeViaOutsideClick",
+    "sb-closeViaOutsideClick",
     defaults.closeViaOutsideClick
   );
 
   const [closeViaEscapeKey, setCloseViaEscapeKey] = useSwitchboardState(
-    "closeViaEscapeKey",
+    "sb-closeViaEscapeKey",
     defaults.closeViaEscapeKey
   );
 
   const [position, setPosition] = useSwitchboardState<Position>(
-    "position",
+    "sb-position",
     defaults.position
   );
 

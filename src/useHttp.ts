@@ -17,7 +17,7 @@ export function useHttp(
 ) {
   // TODO: Move to URL?
   const [delay, setDelay, delayChanged] = useSwitchboardState(
-    "delay",
+    "sb-delay",
     httpDefaults.delay
   );
 
@@ -28,7 +28,7 @@ export function useHttp(
 
   const [customResponses, setCustomResponses] = useSwitchboardState<
     CustomResponse[]
-  >("customResponses", []);
+  >("sb-customResponses", []);
 
   // Store mswSettings in a ref so the useEffect below that starts the worker runs only once, yet reads the latest config value as they change in the devtools.
   useEffect(() => {
