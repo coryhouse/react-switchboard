@@ -30,14 +30,14 @@ export type SwitchboardStateOptions = {
  * This hook makes it easy to declare state for devtools.
  * It's a fork of https://usehooks.com/useLocalStorage/,
  * but enhanced to read the URL as a way to override the specified default.
- * Since devtools often benefit from being initialized via the URL,
- * it reads the default value from the URL. And since it's handy
+ * Since DevTools often benefit from being initialized via the URL,
+ * it reads optional default values from the URL. And since it's handy
  * for the DevTools to "remember" settings between hard refreshes,
  * it writes settings to localStorage onChange.
  *
  * Finally, if neither the URL or localStorage is set, it falls back
  * to the provided default.
- * It sets the default value in the following order:
+ * In summary, it sets the default value in the following order:
  * 1. URL
  * 2. localStorage
  * 3. Specified default
