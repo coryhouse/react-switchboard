@@ -17,7 +17,7 @@ export default function GeneralSettings() {
     setOpenByDefault,
     closeViaOutsideClick,
     setCloseViaOutsideClick,
-    copyDevToolsSettingsUrlToClipboard,
+    copySettingsUrlToClipboard,
   } = useSwitchboard({});
 
   return (
@@ -71,7 +71,7 @@ export default function GeneralSettings() {
         <Field>
           <CopySettingsButton
             className="mr-2 w-32"
-            onClick={copyDevToolsSettingsUrlToClipboard}
+            onClick={copySettingsUrlToClipboard}
           />
         </Field>
 
