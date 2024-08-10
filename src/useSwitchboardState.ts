@@ -12,7 +12,7 @@ function getUrlWithUpdatedQuery(url: URL, key: string, value: unknown = null) {
   return urlWithoutQuerystring + "?" + params.toString();
 }
 
-export type DevToolsStateOptions = {
+export type SwitchboardStateOptions = {
   /** Set to true to show values that match the default value in the URL.
    * By default, if the selected value matches the default value, it's omitted from the URL.
    * This keeps the URL as short as possible.  */
@@ -56,7 +56,7 @@ export type DevToolsStateOptions = {
 export function useSwitchboardState<T>(
   key: string,
   defaultValue: T,
-  options?: DevToolsStateOptions
+  options?: SwitchboardStateOptions
 ) {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
