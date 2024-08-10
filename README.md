@@ -43,8 +43,8 @@ The `Switchboard` component accepts children so you can specify what it renders.
 
 ### Hooks
 
-- `useSwitchboard` - A hook that contains logic for running Switchboard. This is useful if you want to create a completely custom Switchboard UI.
-- `useSwitchboardState` - A hook that contains the state of Switchboard. This is useful if you want to extend Switchboard's features with custom settings for your app, or if you want to create a custom Switchboard UI.
+- `useSwitchboard` - A hook that contains logic for running Switchboard. Useful to create a custom Switchboard UI.
+- `useSwitchboardState` - A hook that contains the state of Switchboard. Useful to extend Switchboard's features with custom settings for your app, or if you want to create a custom Switchboard UI.
 
 ## FAQ
 
