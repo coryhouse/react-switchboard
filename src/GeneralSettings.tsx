@@ -87,12 +87,6 @@ export default function GeneralSettings() {
             Clear Settings
           </Button>
         </Field>
-
-        <Field>
-          <Button type="submit" onClick={() => window.location.reload()}>
-            Reload
-          </Button>
-        </Field>
       </div>
     </details>
   );
