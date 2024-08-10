@@ -79,7 +79,7 @@ export default function GeneralSettings() {
           <Button
             className="mr-2"
             onClick={() => {
-              // TODO: Only clear devtools-related localStorage.
+              // TODO: Only clear switchboard-related localStorage.
               localStorage.clear();
               window.location.reload();
             }}
