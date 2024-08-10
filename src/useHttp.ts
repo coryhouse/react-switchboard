@@ -15,7 +15,6 @@ export function useHttp(
   mswSettings: SwitchboardMswSettings,
   setIsReady: () => void
 ) {
-  // TODO: Move to URL?
   const [delay, setDelay, delayChanged] = useSwitchboardState(
     "sb-delay",
     httpDefaults.delay
