@@ -79,8 +79,12 @@ export default function GeneralSettings() {
           <Button
             className="mr-2"
             onClick={() => {
-              // TODO: Only clear switchboard-related localStorage.
-              localStorage.clear();
+              // Get list of items in localStorage that start with "sb-" so we only remove Switchboard settings:
+              const switchboardKeys = Object.keys(localStorage).filter((key) =>
+                key.startsWith("sb-")
+              );
+              // Remove each item from localStorage
+              switchboardKeys.forEach((key) => localStorage.removeItem(key));
               window.location.reload();
             }}
           >

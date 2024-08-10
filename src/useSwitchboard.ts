@@ -82,38 +82,24 @@ export function useSwitchboard({
     if (closeViaOutsideClick) setIsOpen(false);
   });
 
-  // Only copy settings to the URL that have been changed from the default. This keeps the URL as short as possible.
-  function getChangedSettings() {
-    const urlConfig: Partial<SwitchboardConfig> = {};
-    if (defaults.position !== position) urlConfig.position = position;
-    if (defaults.openByDefault !== openByDefault) {
-      urlConfig.openByDefault = openByDefault;
-    }
+  // Convert the settings to URL search params
+  function getSettingsAsQueryParams() {
+    // Get list of items in localStorage that start with "sb-":
+    const switchboardKeys = Object.keys(localStorage).filter((key) =>
+      key.startsWith("sb-")
+    );
 
-    //TODO: Fix below
-    // if (defaults.delay != delay) urlConfig.delay = delay;
-    // if (customResponses.length > 0) urlConfig.customResponses = customResponses;
-    return urlConfig;
-  }
-
-  // Build a URL that contains a querystring key/value pair for each populated property in the provided config. By convention, each property name is mapped to the querystring's key.
-  function buildUrl<TDevToolsConfig>(
-    baseUrl: string,
-    config: Partial<TDevToolsConfig>
-  ) {
+    // Encode the settings into search params
     const params = new URLSearchParams();
-    for (const [key, value] of Object.entries(config)) {
-      params.append(key, JSON.stringify(value));
-    }
-    return baseUrl + "?" + params.toString();
+    switchboardKeys.forEach((key) => {
+      params.set(key, localStorage.getItem(key)!);
+    });
+
+    return "?" + params.toString();
   }
 
   async function copySettingsUrlToClipboard() {
-    const urlConfig = getChangedSettings();
-    const url = buildUrl(window.location.href, {
-      ...urlConfig,
-      //...customSettings, TODO: // Add support
-    });
+    const url = window.location.href + getSettingsAsQueryParams();
     try {
       await writeToClipboard(url);
       if (url.length > maxUrlLength) {
