@@ -30,7 +30,6 @@ export type DevToolsStateOptions = {
 /**
  * This hook makes it easy to declare state for devtools.
  * It's a fork of https://usehooks.com/useLocalStorage/,
- * // TODO: Consider forking alternative localStorage hook that uses useSyncExternalStore
  * but enhanced to read the URL as a way to override the specified default.
  * Since devtools often benefit from being initialized via the URL,
  * it reads the default value from the URL. And since it's handy
@@ -49,11 +48,11 @@ export type DevToolsStateOptions = {
  *
  * This hook writes each state change to 2 spots:
  * 1. localStorage (so settings persist after the tab is closed)
- * 2. local state variable (so React re-renders the devtools)
+ * 2. local state variable (so React renders when the state changes)
  *
  *
  * @param key The URL param to check for the default, as well as the key used to write the value to localStorage
- * @param defaultValue The default value to use if the URL and localStorage both don't have a matching value for the provided key.
+ * @param defaultValue The default value to use if the URL and localStorage don't have a matching value for the provided key.
  * */
 export function useSwitchboardState<T>(
   key: string,
