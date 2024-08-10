@@ -4,4 +4,5 @@ import { Switchboard } from "./Switchboard";
 import { Http } from "./Http";
 import { useHttp } from "./useHttp";
 
-export { useSwitchboard, useSwitchboardState, Switchboard, Http, useHttp };
+export { useSwitchboard, useSwitchboardState, Http, useHttp };
+export default Switchboard;
