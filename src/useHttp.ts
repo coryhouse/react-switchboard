@@ -3,6 +3,7 @@ import { useSwitchboardState } from "./useSwitchboardState";
 import { SetupWorker, setupWorker } from "msw/browser";
 import { CustomResponse } from "./http.types";
 import { SwitchboardMswSettings } from "./Switchboard";
+import { useSwitchboardContext } from "./SwitchboardContext";
 
 export const httpDefaults = {
   delay: 0,
@@ -15,10 +16,7 @@ export function useHttp(
   mswSettings: SwitchboardMswSettings,
   setIsReady: () => void
 ) {
-  const [delay, setDelay, delayChanged] = useSwitchboardState(
-    "sb-delay",
-    httpDefaults.delay
-  );
+  const { delay, delayChanged] = useSwitchboardContext("delay");
 
   const configRef = useRef(mswSettings);
 
@@ -27,7 +25,7 @@ export function useHttp(
 
   const [customResponses, setCustomResponses] = useSwitchboardState<
     CustomResponse[]
-  >("sb-customResponses", []);
+  >("customResponses", []);
 
   // Store mswSettings in a ref so the useEffect below that starts the worker runs only once, yet reads the latest config value as they change in the devtools.
   useEffect(() => {

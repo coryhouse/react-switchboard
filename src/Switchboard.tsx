@@ -10,6 +10,7 @@ import { Http } from "./Http";
 import "./switchboard.css";
 import { RequestHandler } from "msw";
 import { StartOptions } from "msw/browser";
+import { SwitchboardContextProvider } from "./SwitchboardContext";
 
 export const customResponseDefaults = {
   delay: 0,
@@ -74,7 +75,7 @@ export function Switchboard({
   const hasAppBehaviorChanges = false;
 
   return (
-    <>
+    <SwitchboardContextProvider>
       {/* Wrap app in ErrorBoundary so DevTools continue to display upon error */}
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         {isReady ? appSlot : <p>Initializing msw...</p>}
@@ -118,6 +119,6 @@ export function Switchboard({
           />
         )}
       </section>
-    </>
+    </SwitchboardContextProvider>
   );
 }

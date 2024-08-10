@@ -8,6 +8,7 @@ import {
 } from "./switchboard.types";
 import { writeToClipboard } from "./clipboardUtils";
 import { useSwitchboardState } from "./useSwitchboardState";
+import { useSwitchboardContext } from "./SwitchboardContext";
 
 const maxUrlLength = 2000;
 
@@ -32,25 +33,22 @@ export function useSwitchboard({
 }: UseSwitchboardArgs) {
   const defaults = getDefaults();
   // These settings use the useSwitchboardState hook so that the settings persist in localStorage and are optionally initialized via the URL
-  const [openByDefault, setOpenByDefault] = useSwitchboardState(
-    "sb-openByDefault",
-    defaults.openByDefault
-  );
+  const [context, setContext] = useSwitchboardContext<SwitchboardConfig>();
 
   const [isOpen, setIsOpen] = useState(openByDefault);
 
   const [closeViaOutsideClick, setCloseViaOutsideClick] = useSwitchboardState(
-    "sb-closeViaOutsideClick",
+    "closeViaOutsideClick",
     defaults.closeViaOutsideClick
   );
 
   const [closeViaEscapeKey, setCloseViaEscapeKey] = useSwitchboardState(
-    "sb-closeViaEscapeKey",
+    "closeViaEscapeKey",
     defaults.closeViaEscapeKey
   );
 
   const [position, setPosition] = useSwitchboardState<Position>(
-    "sb-position",
+    "position",
     defaults.position
   );
 
@@ -89,9 +87,9 @@ export function useSwitchboard({
     if (defaults.openByDefault !== openByDefault) {
       urlConfig.openByDefault = openByDefault;
     }
+    if (defaults.delay != delay) urlConfig.delay = delay;
 
     //TODO: Fix below
-    // if (defaults.delay != delay) urlConfig.delay = delay;
     // if (customResponses.length > 0) urlConfig.customResponses = customResponses;
     return urlConfig;
   }
@@ -127,13 +125,14 @@ export function useSwitchboard({
   }
 
   return {
-    isOpen,
+    isOpen: context.,
     setIsOpen,
     position,
     setPosition,
-    openByDefault,
-    setOpenByDefault,
-    closeViaOutsideClick,
+    openByDefault: context.openByDefault,
+    setOpenByDefault: (newVal: boolean) =>
+      setContext({ ...context, openByDefault: newVal }),
+    closeViaOutsideClick: context.,
     setCloseViaOutsideClick,
     closeViaEscapeKey,
     setCloseViaEscapeKey,
