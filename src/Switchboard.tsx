@@ -63,7 +63,7 @@ export function Switchboard({
   ErrorFallback,
   className,
   defaults,
-}: SwitchboardProps) {
+}: Readonly<SwitchboardProps>) {
   const [isReady, setIsReady] = useState(false);
   const { isOpen, setIsOpen, position, devToolsWindowRef } = useSwitchboard({
     openKeyboardShortcut,
