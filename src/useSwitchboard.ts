@@ -108,7 +108,7 @@ export function useSwitchboard({
     return baseUrl + "?" + params.toString();
   }
 
-  async function copyDevToolsSettingsUrlToClipboard() {
+  async function copySettingsUrlToClipboard() {
     const urlConfig = getChangedSettings();
     const url = buildUrl(window.location.href, {
       ...urlConfig,
@@ -137,7 +137,7 @@ export function useSwitchboard({
     setCloseViaOutsideClick,
     closeViaEscapeKey,
     setCloseViaEscapeKey,
-    copyDevToolsSettingsUrlToClipboard,
+    copySettingsUrlToClipboard,
     devToolsWindowRef,
   };
 }
