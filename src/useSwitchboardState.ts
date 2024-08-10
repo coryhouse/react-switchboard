@@ -89,7 +89,7 @@ export function useSwitchboardState<T>(
       const item = window.localStorage.getItem(key);
       // Parse stored json or if none return initialValue
 
-      // TODO: Use Zod to assure the querystring parses into a DevToolsConfig
+      // TODO: Use Zod to validate the querystring
       return item ? JSON.parse(item) : defaultValue;
     } catch (error) {
       // If error also return initialValue
