@@ -3,10 +3,10 @@ import Button, { ButtonProps } from "./Button";
 export default function DeleteButton(props: ButtonProps) {
   return (
     <Button variant="icon" {...props}>
-      <span className="sr-only">Delete</span>
+      <span className="sb-sr-only">Delete</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-6 w-6"
+        className="sb-h-6 w-6"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"

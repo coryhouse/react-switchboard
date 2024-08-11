@@ -5,7 +5,7 @@ interface LabelProps extends React.ComponentPropsWithoutRef<"label"> {
 
 export default function Label({ children, htmlFor }: LabelProps) {
   return (
-    <label className="block" htmlFor={htmlFor}>
+    <label className="sb-block" htmlFor={htmlFor}>
       {children}
     </label>
   );

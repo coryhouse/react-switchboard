@@ -33,9 +33,9 @@ export default function Input(props: InputProps) {
       </Label>
       <input
         className={cx(
-          "border-slate-400 border-solid border rounded p-1",
-          { "bg-yellow-100": changed },
-          { "w-full": width === "full" },
+          "sb-border-slate-400 sb-border-solid sb-border sb-rounded p-1",
+          { "sb-bg-yellow-100": changed },
+          { "sb-w-full": width === "full" },
           className
         )}
         type="text"

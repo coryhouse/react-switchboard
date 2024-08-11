@@ -10,13 +10,17 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={cx(className, "border border-slate-400 p-1 rounded", {
-        "bg-blue-600 text-white": variant === "primary",
-        "bg-white border-none p-1 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100":
-          variant === "icon",
-        "absolute inset-0 border-none inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:backdrop-brightness-90":
-          variant === "expander",
-      })}
+      className={cx(
+        className,
+        "sb-border sb-border-slate-400 sb-p-1 sb-rounded",
+        {
+          "sb-bg-blue-600 sb-text-white": variant === "primary",
+          "sb-bg-white sb-border-none sb-p-1 sb-inline-flex sb-items-center sb-justify-center sb-text-gray-400 sb-hover:text-gray-500 sb-hover:bg-gray-100":
+            variant === "icon",
+          "sb-absolute sb-inset-0 sb-border-none sb-inline-flex sb-items-center sb-justify-center sb-text-gray-400 sb-hover:text-gray-500 sb-hover:backdrop-brightness-90":
+            variant === "expander",
+        }
+      )}
       {...rest}
     />
   );

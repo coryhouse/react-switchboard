@@ -24,14 +24,17 @@ export default function Select(props: SelectProps) {
   } = props;
   return (
     <>
-      <Label className="block" htmlFor={id}>
+      <Label className="sb-block" htmlFor={id}>
         {label}
       </Label>
       <select
-        className={clsx("border-slate-400 border-solid border p-1 rounded", {
-          "bg-yellow-100": changed,
-          "w-full": width === "full",
-        })}
+        className={clsx(
+          "sb-border-slate-400 sb-border-solid sb-border sb-p-1 sb-rounded",
+          {
+            "sb-bg-yellow-100": changed,
+            "sb-w-full": width === "full",
+          }
+        )}
         id={id}
         value={value}
         onChange={onChange}

@@ -22,7 +22,7 @@ export function Http({ mswSettings, setIsReady }: HttpProps) {
 
   return (
     <details open>
-      <summary className="mt-4 font-bold">HTTP</summary>
+      <summary className="sb-mt-4 sb-font-bold">HTTP</summary>
       <Field>
         <Input
           id="globalDelay"

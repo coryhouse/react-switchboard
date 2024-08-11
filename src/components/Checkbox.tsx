@@ -15,7 +15,7 @@ export default function Checkbox(props: CheckboxProps) {
     <span>
       <input
         className={cx(
-          "border-slate-400 border-solid border p-1 rounded",
+          "sb-border-slate-400 sb-border-solid sb-border p-1 sb-rounded",
           className
         )}
         type="checkbox"
@@ -24,7 +24,7 @@ export default function Checkbox(props: CheckboxProps) {
         onChange={onChange}
         {...rest}
       />
-      <label className="ml-4" htmlFor={id}>
+      <label className="sb-ml-4" htmlFor={id}>
         {props.label}
       </label>
     </span>

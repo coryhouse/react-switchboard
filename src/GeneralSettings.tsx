@@ -22,8 +22,8 @@ export default function GeneralSettings() {
   } = useSwitchboard({});
 
   return (
-    <details className="mt-4" open>
-      <summary className="mt-4 font-bold">General</summary>
+    <details className="sb-mt-4" open>
+      <summary className="sb-mt-4 sb-font-bold">General</summary>
 
       <Field>
         <Select
@@ -32,10 +32,10 @@ export default function GeneralSettings() {
           value={position}
           onChange={(e) => setPosition(e.target.value as Position)}
         >
-          <option value="top-left">Top left</option>
-          <option value="top-right">Top Right</option>
-          <option value="bottom-left">Bottom left</option>
-          <option value="bottom-right">Bottom right</option>
+          <option value="sb-top-left">Top left</option>
+          <option value="sb-top-right">Top Right</option>
+          <option value="sb-bottom-left">Bottom left</option>
+          <option value="sb-bottom-right">Bottom right</option>
         </Select>
       </Field>
 
@@ -68,17 +68,17 @@ export default function GeneralSettings() {
         />
       </Field>
 
-      <div className="flex flex-row">
+      <div className="sb-flex sb-flex-row">
         <Field>
           <CopySettingsButton
-            className="mr-2 w-32"
+            className="sb-mr-2 sb-w-32"
             onClick={copySettingsUrlToClipboard}
           />
         </Field>
 
         <Field>
           <Button
-            className="mr-2"
+            className="sb-mr-2"
             onClick={() => {
               const switchboardKeys = getLocalStorageSwitchboardKeys();
               // Remove each all Switchboard settings from localStorage and reload

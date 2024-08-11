@@ -16,7 +16,7 @@ export default function HttpCustomResponseForm({
 
   // TODO: Support all response properties: https://mswjs.io/docs/api/response#properties
   return (
-    <fieldset className="mt-4 border p-2">
+    <fieldset className="sb-mt-4 sb-border sb-p-2">
       <legend>
         {handler}{" "}
         <DeleteButton
@@ -25,13 +25,13 @@ export default function HttpCustomResponseForm({
           }
         />
       </legend>
-      <div className="flex flex-row">
+      <div className="sb-flex sb-flex-row">
         <Input
           id={`${handler}-delay`}
           type="number"
           changed={delay !== customResponseDefaults.delay}
           label="Delay"
-          className="w-20 mr-4"
+          className="sb-w-20 sb-mr-4"
           value={delay}
           onChange={(e) =>
             setCustomResponses((r) =>
@@ -52,7 +52,7 @@ export default function HttpCustomResponseForm({
           type="number"
           changed={status !== customResponseDefaults.status}
           label="Status"
-          className="w-20 mr-4"
+          className="sb-w-20 sb-mr-4"
           value={status}
           onChange={(e) =>
             setCustomResponses((r) =>
@@ -73,7 +73,7 @@ export default function HttpCustomResponseForm({
           type="text"
           changed={response !== customResponseDefaults.response}
           label="Response"
-          className="w-20"
+          className="sb-w-20"
           value={response}
           placeholder="Default"
           onChange={(e) =>

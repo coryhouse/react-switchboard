@@ -82,14 +82,14 @@ export function Switchboard({
       <section
         ref={devToolsWindowRef}
         className={cx(
-          "fixed p-4 border shadow-xl max-h-screen overflow-auto bg-white opacity-90",
+          "sb-fixed sb-p-4 sb-border sb-shadow-xl sb-max-h-screen sb-overflow-auto sb-bg-white sb-opacity-90",
           {
-            "w-16 h-16": !isOpen,
-            "bg-yellow-100": !isOpen && hasAppBehaviorChanges,
-            "bottom-0": position.includes("bottom"),
-            "top-0": position.includes("top"),
-            "right-0": position.includes("right"),
-            "left-0": position.includes("left"),
+            "sb-w-16 sb-h-16": !isOpen,
+            "sb-bg-yellow-100": !isOpen && hasAppBehaviorChanges,
+            "sb-bottom-0": position.includes("bottom"),
+            "sb-top-0": position.includes("top"),
+            "sb-right-0": position.includes("right"),
+            "sb-left-0": position.includes("left"),
           },
           className
         )}
