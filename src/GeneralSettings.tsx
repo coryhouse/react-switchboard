@@ -6,6 +6,7 @@ import Button from "./components/Button";
 import { useSwitchboard } from "./useSwitchboard";
 import { Position } from "./switchboard.types";
 import Checkbox from "./components/Checkbox";
+import { getLocalStorageSwitchboardKeys } from "./localStorage.utils";
 
 export default function GeneralSettings() {
   const {
