@@ -84,10 +84,7 @@ export function useSwitchboard({
 
   // Convert the settings to URL search params
   function getSettingsAsQueryParams() {
-    // Get list of items in localStorage that start with "sb-":
-    const switchboardKeys = Object.keys(localStorage).filter((key) =>
-      key.startsWith("sb-")
-    );
+    const switchboardKeys = getLocalStorageSwitchboardKeys();
 
     // Encode the settings into search params
     const params = new URLSearchParams();
