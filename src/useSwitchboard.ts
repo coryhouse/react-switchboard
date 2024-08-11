@@ -1,13 +1,10 @@
 import { useState, useRef } from "react";
 import useKeypress from "react-use-keypress";
 import useOutsideClick from "./useOutsideClick";
-import {
-  Position,
-  SwitchboardDefaults,
-  SwitchboardConfig,
-} from "./switchboard.types";
+import { Position, SwitchboardDefaults } from "./switchboard.types";
 import { writeToClipboard } from "./clipboardUtils";
 import { useSwitchboardState } from "./useSwitchboardState";
+import { getLocalStorageSwitchboardKeys } from "./localStorage.utils";
 
 const maxUrlLength = 2000;
 
