@@ -17,6 +17,7 @@ Call `Switchboard` in your project root. Pass your app's main component to `Swit
 ```tsx
 import { lazy } from "react";
 import { createRoot } from "react-dom/client";
+import "react-switchboard/dist/index.css";
 
 const Switchboard = lazy(() => import("react-switchboard"));
 
