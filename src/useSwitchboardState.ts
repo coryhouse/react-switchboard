@@ -26,6 +26,10 @@ export type SwitchboardStateOptions = {
   storeDefaultValuesInLocalStorage?: boolean;
 };
 
+type SwitchboardKey<TKey, TPrefix extends string> = TKey extends string
+  ? `${TPrefix}${TKey}`
+  : never;
+
 /**
  * This hook makes it easy to declare state for devtools.
  * It's a fork of https://usehooks.com/useLocalStorage/,
@@ -54,7 +58,8 @@ export type SwitchboardStateOptions = {
  * @param defaultValue The default value to use if the URL and localStorage don't have a matching value for the provided key.
  * */
 export function useSwitchboardState<T>(
-  key: string,
+  /** Prefix each key with "sb-" to "namespace" all Switchboard settings. This avoids naming collisions and supports easily removing only the Switchboard settings from localStorage when necessary. */
+  key: SwitchboardKey<string, "sb-">,
   defaultValue: T,
   options?: SwitchboardStateOptions
 ) {
