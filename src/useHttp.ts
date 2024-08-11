@@ -43,8 +43,6 @@ export function useHttp(
     };
 
     startWorker(worker);
-    // TODO: Eliminate need for disable
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {
