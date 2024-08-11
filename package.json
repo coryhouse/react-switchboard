@@ -9,13 +9,15 @@
     "prepublish": "npm run build"
   },
   "exports": {
-    "types": "./dist/index.d.ts",
-    "import": [
-      "./dist/index.mjs"
-    ],
-    "require": [
-      "./dist/index.js"
-    ]
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/index.css": {
+      "import": "./dist/index.css",
+      "require": "./dist/index.css"
+    }
   },
   "types": "./dist/index.d.ts",
   "files": [
