@@ -1,9 +1,8 @@
 import { useState } from "react";
 import Button from "./Button";
 
-// TODO: need this export?
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {}
+interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {}
 
 const labelDefault = "Copy Settings";
 
