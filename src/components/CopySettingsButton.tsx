@@ -6,6 +6,8 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {}
 
 const labelDefault = "Copy Settings";
 
+const hideCopiedConfirmationAfterXMilliSeconds = 2000;
+
 export default function CopySettingsButton({ onClick, ...rest }: ButtonProps) {
   const [label, setLabel] = useState(labelDefault);
 
@@ -14,7 +16,7 @@ export default function CopySettingsButton({ onClick, ...rest }: ButtonProps) {
     if (onClick) onClick(e);
     setTimeout(() => {
       setLabel(labelDefault);
-    }, 2000);
+    }, hideCopiedConfirmationAfterXMilliSeconds);
   }
 
   return (
