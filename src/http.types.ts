@@ -1,7 +1,7 @@
 import { RequestHandler } from "msw";
 import { StartOptions } from "msw/browser";
 
-export type CustomResponse = {
+export interface CustomResponse {
   /** Response handler name */
   handler: string;
 
@@ -13,9 +13,9 @@ export type CustomResponse = {
 
   /** Optional response. */
   response?: string;
-};
+}
 
-export type MswSettings = {
+export interface MswSettings {
   /** A function that accepts custom settings and returns an array of Mock Service Worker request handlers */
   // TODO: Eliminate any use here.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -29,4 +29,4 @@ export type MswSettings = {
 
   /** Array of custom responses */
   customResponses: CustomResponse[];
-};
+}
