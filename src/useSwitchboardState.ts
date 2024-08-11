@@ -12,7 +12,7 @@ function getUrlWithUpdatedQuery(url: URL, key: string, value: unknown = null) {
   return urlWithoutQuerystring + "?" + params.toString();
 }
 
-export type SwitchboardStateOptions = {
+interface SwitchboardStateOptions {
   /** Set to true to show values that match the default value in the URL.
    * By default, if the selected value matches the default value, it's omitted from the URL.
    * This keeps the URL as short as possible.  */
@@ -24,7 +24,7 @@ export type SwitchboardStateOptions = {
    * This keeps localStorage as minimal as possible.
    */
   storeDefaultValuesInLocalStorage?: boolean;
-};
+}
 
 type SwitchboardKey<TKey, TPrefix extends string> = TKey extends string
   ? `${TPrefix}${TKey}`

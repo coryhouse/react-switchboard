@@ -14,7 +14,7 @@ interface KeyboardShortcut {
   ctrl?: boolean;
 }
 
-export interface UseSwitchboardArgs {
+interface UseSwitchboardArgs {
   /** Override the built in setting defaults */
   overriddenDefaults?: Partial<SwitchboardDefaults>;
 
