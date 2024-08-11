@@ -1,17 +1,17 @@
 import { CustomResponse } from "./http.types";
 
-export const Positions = [
+export const switchboardPositions = [
   "top-left",
   "top-right",
   "bottom-left",
   "bottom-right",
 ] as const;
 
-/** Union of window positions */
-export type Position = (typeof Positions)[number];
+/** Union of Switchboard window positions */
+export type Position = (typeof switchboardPositions)[number];
 
 /** Setting defaults */
-export type SwitchboardDefaults = {
+export interface SwitchboardDefaults {
   /** Set to true to enable closing Switchboard by clicking outside the window by default */
   closeViaOutsideClick: boolean;
 
@@ -26,7 +26,7 @@ export type SwitchboardDefaults = {
 
   /** Set to true to open Switchboard by default */
   openByDefault: boolean;
-};
+}
 
 export interface SwitchboardConfig {
   /** Set to true to open the DevTools window by default */
