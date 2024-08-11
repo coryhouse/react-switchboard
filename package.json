@@ -6,7 +6,8 @@
     "prebuild": "tailwindcss -o src/index.css",
     "build": "tsup",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "knip": "knip"
   },
   "exports": {
     ".": {
