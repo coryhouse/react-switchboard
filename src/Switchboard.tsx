@@ -9,6 +9,7 @@ import { useSwitchboard } from "./useSwitchboard";
 import { Http } from "./Http";
 import { RequestHandler } from "msw";
 import { StartOptions } from "msw/browser";
+import "./index.css";
 
 export const customResponseDefaults = {
   delay: 0,
