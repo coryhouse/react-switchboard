@@ -10,6 +10,7 @@ import { Http } from "./Http";
 import { RequestHandler } from "msw";
 import { StartOptions } from "msw/browser";
 import "./index.css";
+import DefaultErrorFallback from "./ErrorFallback";
 
 export const customResponseDefaults = {
   delay: 0,
@@ -50,8 +51,8 @@ interface SwitchboardProps {
   /** Custom content and settings to render inside the devtools */
   children: React.ReactNode;
 
-  /** Error fallback to render if the app crashes */
-  ErrorFallback: ComponentType<FallbackProps>;
+  /** Error react-error-boundary fallback component to render if the app's top-level error boundary is hit. If omitted, Switchboard's default error fallback is used. */
+  ErrorFallback?: ComponentType<FallbackProps>;
 }
 
 /** Display custom devtools settings for your project */
@@ -75,8 +76,8 @@ export function Switchboard({
 
   return (
     <>
-      {/* Wrap app in ErrorBoundary so DevTools continue to display upon error */}
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
+      {/* Wrap app in ErrorBoundary so Switchboard continues to display even if the app errors */}
+      <ErrorBoundary FallbackComponent={ErrorFallback ?? DefaultErrorFallback}>
         {isReady ? appSlot : <p>Initializing msw...</p>}
       </ErrorBoundary>
 
