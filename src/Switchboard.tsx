@@ -76,7 +76,7 @@ export function Switchboard({
       </ErrorBoundary>
 
       <section
-        ref={devToolsWindowRef}
+        ref={switchboardWindowRef}
         className={cx(
           "sb-fixed sb-p-4 sb-border sb-shadow-xl sb-max-h-screen sb-overflow-auto sb-bg-white sb-opacity-90 sb-text-left",
           {
