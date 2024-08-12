@@ -60,23 +60,13 @@ export function Switchboard({
   defaults,
 }: Readonly<SwitchboardProps>) {
   const [mswIsReady, setMswIsReady] = useState(!mswSettings);
-  const {
-    isOpen,
-    setIsOpen,
-    position,
-    setPosition,
-    switchboardWindowRef,
-    openByDefault,
-    setOpenByDefault,
-    closeViaEscapeKey,
-    setCloseViaEscapeKey,
-    closeViaOutsideClick,
-    setCloseViaOutsideClick,
-    copySettingsUrlToClipboard,
-  } = useSwitchboard({
-    openKeyboardShortcut,
-    overriddenDefaults: defaults,
-  });
+  const { generalSettings, switchboardWindowRef, copySettingsUrlToClipboard } =
+    useSwitchboard({
+      openKeyboardShortcut,
+      overriddenDefaults: defaults,
+    });
+
+  const { isOpen, setIsOpen, position } = generalSettings;
 
   // TODO: Implement
   const hasAppBehaviorChanges = false;
@@ -118,14 +108,7 @@ export function Switchboard({
               />
             )}
             <GeneralSettings
-              position={position}
-              setPosition={setPosition}
-              openByDefault={openByDefault}
-              setOpenByDefault={setOpenByDefault}
-              closeViaEscapeKey={closeViaEscapeKey}
-              setCloseViaEscapeKey={setCloseViaEscapeKey}
-              closeViaOutsideClick={closeViaOutsideClick}
-              setCloseViaOutsideClick={setCloseViaOutsideClick}
+              settings={generalSettings}
               copySettingsUrlToClipboard={copySettingsUrlToClipboard}
             />
           </>
