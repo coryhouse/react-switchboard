@@ -3,24 +3,50 @@ import Field from "./components/Field";
 import Select from "./components/Select";
 import CopySettingsButton from "./components/CopySettingsButton";
 import Button from "./components/Button";
-import { useSwitchboard } from "./useSwitchboard";
 import { Position } from "./switchboard.types";
 import Checkbox from "./components/Checkbox";
 import { getLocalStorageSwitchboardKeys } from "./localStorage.utils";
 
-export default function GeneralSettings() {
-  const {
-    position,
-    setPosition,
-    closeViaEscapeKey,
-    setCloseViaEscapeKey,
-    openByDefault,
-    setOpenByDefault,
-    closeViaOutsideClick,
-    setCloseViaOutsideClick,
-    copySettingsUrlToClipboard,
-  } = useSwitchboard({});
+interface GeneralSettingsProps {
+  /** Switchboard window position */
+  position: Position;
 
+  /** Set Switchboard's window position */
+  setPosition: React.Dispatch<React.SetStateAction<Position>>;
+
+  /** Set to true to open Switchboard by default */
+  openByDefault: boolean;
+
+  /** Setter to change the openByDefault setting */
+  setOpenByDefault: React.Dispatch<React.SetStateAction<boolean>>;
+
+  /** Set to true to close Switchboard when the escape key is pressed */
+  closeViaEscapeKey: boolean;
+
+  /** Setter to change the closeViaEscapeKey setting */
+  setCloseViaEscapeKey: React.Dispatch<React.SetStateAction<boolean>>;
+
+  /** Set to true to close Switchboard when clicking outside of it */
+  closeViaOutsideClick: boolean;
+
+  /** Setter to change the closeViaOutsideClick setting */
+  setCloseViaOutsideClick: React.Dispatch<React.SetStateAction<boolean>>;
+
+  /** Copy the current settings URL to the clipboard */
+  copySettingsUrlToClipboard: () => void;
+}
+
+export default function GeneralSettings({
+  position,
+  setPosition,
+  openByDefault,
+  setOpenByDefault,
+  closeViaEscapeKey,
+  setCloseViaEscapeKey,
+  closeViaOutsideClick,
+  setCloseViaOutsideClick,
+  copySettingsUrlToClipboard,
+}: Readonly<GeneralSettingsProps>) {
   return (
     <details className="sb-mt-4" open>
       <summary className="sb-mt-4 sb-font-bold">General</summary>
