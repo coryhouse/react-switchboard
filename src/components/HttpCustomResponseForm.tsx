@@ -1,7 +1,12 @@
 import { CustomResponse } from "../http.types";
-import { customResponseDefaults } from "../Switchboard";
 import DeleteButton from "./DeleteButton";
 import Input from "./Input";
+
+export const customResponseDefaults = {
+  delay: 0,
+  status: 200,
+  response: undefined,
+};
 
 type CustomResponseFormProps = {
   customResponse: CustomResponse;
@@ -11,7 +16,7 @@ type CustomResponseFormProps = {
 export default function HttpCustomResponseForm({
   customResponse,
   setCustomResponses,
-}: CustomResponseFormProps) {
+}: Readonly<CustomResponseFormProps>) {
   const { handler, delay, status, response } = customResponse;
 
   // TODO: Support all response properties: https://mswjs.io/docs/api/response#properties

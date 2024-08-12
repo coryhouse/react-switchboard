@@ -12,12 +12,6 @@ import { StartOptions } from "msw/browser";
 import "./index.css";
 import DefaultErrorFallback from "./ErrorFallback";
 
-export const customResponseDefaults = {
-  delay: 0,
-  status: 200,
-  response: undefined,
-};
-
 interface KeyboardShortcut {
   key: string | string[];
   alt?: boolean;
