@@ -39,7 +39,7 @@ interface UseSwitchboardArgs {
 export function useSwitchboard({
   openKeyboardShortcut,
   overriddenDefaults,
-}: UseSwitchboardArgs) {
+}: UseSwitchboardArgs | undefined = {}) {
   // These settings use the useSwitchboardState hook so that the settings persist in localStorage and are optionally initialized via the URL
   const [openByDefault, setOpenByDefault] = useSwitchboardState(
     "sb-openByDefault",
