@@ -78,7 +78,7 @@ export function Switchboard({
       <section
         ref={devToolsWindowRef}
         className={cx(
-          "sb-fixed sb-p-4 sb-border sb-shadow-xl sb-max-h-screen sb-overflow-auto sb-bg-white sb-opacity-90",
+          "sb-fixed sb-p-4 sb-border sb-shadow-xl sb-max-h-screen sb-overflow-auto sb-bg-white sb-opacity-90 sb-text-left",
           {
             "sb-w-16 sb-h-16": !isOpen,
             "sb-bg-yellow-100": !isOpen && hasAppBehaviorChanges,
