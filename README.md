@@ -2,7 +2,8 @@
 
 Quickly create custom DevTools for your React app.
 
-[Demo](https://switchboard-beta.vercel.app/) 🚀
+- [Live Demo](https://switchboard-beta.vercel.app/) 🚀
+- [Demo repo using Vite](https://github.com/coryhouse/switchboard-with-vite-demo)
 
 ## Quick Start
 
