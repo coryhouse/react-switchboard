@@ -65,7 +65,7 @@ export function Switchboard({
     overriddenDefaults: defaults,
   });
 
-  // TODO: Reimplement
+  // TODO: Implement
   const hasAppBehaviorChanges = false;
 
   return (
