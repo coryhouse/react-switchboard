@@ -60,7 +60,7 @@ export function Switchboard({
   defaults,
 }: Readonly<SwitchboardProps>) {
   const [mswIsReady, setMswIsReady] = useState(!mswSettings);
-  const { isOpen, setIsOpen, position, devToolsWindowRef } = useSwitchboard({
+  const { isOpen, setIsOpen, position, switchboardWindowRef } = useSwitchboard({
     openKeyboardShortcut,
     overriddenDefaults: defaults,
   });
