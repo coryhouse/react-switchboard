@@ -48,7 +48,7 @@ interface SwitchboardProps {
   /** Specify a keyboard shortcut that toggles the window open/closed */
   openKeyboardShortcut?: KeyboardShortcut;
 
-  /** Custom content and settings to render inside the devtools */
+  /** Custom content and settings to render inside Switchboard */
   children?: React.ReactNode;
 
   /** Error react-error-boundary fallback component to render if the app's top-level error boundary is hit. If omitted, Switchboard's default error fallback is used. */
