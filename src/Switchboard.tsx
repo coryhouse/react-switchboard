@@ -49,7 +49,7 @@ interface SwitchboardProps {
   openKeyboardShortcut?: KeyboardShortcut;
 
   /** Custom content and settings to render inside the devtools */
-  children: React.ReactNode;
+  children?: React.ReactNode;
 
   /** Error react-error-boundary fallback component to render if the app's top-level error boundary is hit. If omitted, Switchboard's default error fallback is used. */
   ErrorFallback?: ComponentType<FallbackProps>;
