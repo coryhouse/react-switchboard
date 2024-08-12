@@ -45,11 +45,11 @@ The `Switchboard` component accepts children so you can specify what it renders.
 
 ### Hooks
 
-- `useSwitchboard` - A hook that contains logic for running Switchboard. Useful to create a custom Switchboard UI.
-- `useSwitchboardState` - A hook that contains the state of Switchboard. Useful to extend Switchboard's features with custom settings for your app, or if you want to create a custom Switchboard UI.
+- `useSwitchboard` - Logic for running Switchboard. Useful to create a custom Switchboard UI.
+- `useSwitchboardState` - Declare Switchboard state. This state is automatically initialized from the URL, and written to localStorage so that it persists between sessions. Useful to extend Switchboard's features with custom settings for your app, or if you want to create a custom Switchboard UI.
 
 ## FAQ
 
 - **Why does `Switchboard` render my app?** If you configure Switchboard to force the app to throw an error, Switchboard continues to render so you can change Switchboard's settings.
 
-- **What about lazy loading?** It's recommended to lazy load Switchboard. You can use `React.lazy` and `React.Suspense` to do this.
+- **Why lazy loading?** Lazy load `Switchboard` via `React.lazy` and `Suspense` so that it's excluded your app's prod bundle.
