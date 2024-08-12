@@ -37,6 +37,20 @@ createRoot(document.getElementById("root")!).render(
 
 The `Switchboard` component accepts children so you can specify what it renders. If you want complete control over the UI, use the `useSwitchboard` and `useSwitchboardState` hooks instead of the `Switchboard` component.
 
+```tsx
+function CustomSwitchboard() {
+  const { generalSettings, switchboardWindowRef, copySettingsUrlToClipboard } =
+    useSwitchboard();
+
+  // Use useSwitchboardState hook for custom settings.
+  const [user, setUser] = useSwitchboardState("user", null);
+
+  return {
+    /* Your custom JSX to render your desired UI */
+  };
+}
+```
+
 ## API
 
 ### Components
@@ -53,3 +67,7 @@ The `Switchboard` component accepts children so you can specify what it renders.
 - **Why does `Switchboard` render my app?** If you configure Switchboard to force the app to throw an error, Switchboard continues to render so you can change Switchboard's settings.
 
 - **Why lazy loading?** Lazy load `Switchboard` via `React.lazy` and `Suspense` so that it's excluded your app's prod bundle.
+
+```
+
+```
