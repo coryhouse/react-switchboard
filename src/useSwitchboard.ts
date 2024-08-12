@@ -27,43 +27,30 @@ export function useSwitchboard({
   openKeyboardShortcut,
   overriddenDefaults,
 }: UseSwitchboardArgs) {
-  const defaults = getDefaults();
   // These settings use the useSwitchboardState hook so that the settings persist in localStorage and are optionally initialized via the URL
   const [openByDefault, setOpenByDefault] = useSwitchboardState(
     "sb-openByDefault",
-    defaults.openByDefault
+    overriddenDefaults?.openByDefault ?? true
   );
 
   const [isOpen, setIsOpen] = useState(openByDefault);
 
   const [closeViaOutsideClick, setCloseViaOutsideClick] = useSwitchboardState(
     "sb-closeViaOutsideClick",
-    defaults.closeViaOutsideClick
+    overriddenDefaults?.closeViaOutsideClick ?? false
   );
 
   const [closeViaEscapeKey, setCloseViaEscapeKey] = useSwitchboardState(
     "sb-closeViaEscapeKey",
-    defaults.closeViaEscapeKey
+    overriddenDefaults?.closeViaEscapeKey ?? true
   );
 
   const [position, setPosition] = useSwitchboardState(
     "sb-position",
-    defaults.position
+    overriddenDefaults?.position ?? "top-left"
   );
 
   const devToolsWindowRef = useRef<HTMLDivElement>(null);
-
-  // Returns defaults that fallback to hard-coded defaults if the user doesn't specify a preference. These defaults apply if the URL and localStorage don't specify a preference.
-  function getDefaults() {
-    const defaults: SwitchboardDefaults = {
-      closeViaOutsideClick: overriddenDefaults?.closeViaOutsideClick ?? false,
-      closeViaEscapeKey: overriddenDefaults?.closeViaEscapeKey ?? true,
-      delay: overriddenDefaults?.delay ?? 0,
-      openByDefault: overriddenDefaults?.openByDefault ?? true,
-      position: overriddenDefaults?.position ?? "top-left",
-    };
-    return defaults;
-  }
 
   useKeypress("Escape", () => {
     if (closeViaEscapeKey) setIsOpen(false);
