@@ -1,6 +1,6 @@
 import { useSwitchboardState } from "./useSwitchboardState";
 import { useSwitchboard } from "./useSwitchboard";
-import { Switchboard, customResponseDefaults } from "./Switchboard";
+import { Switchboard } from "./Switchboard";
 import { Http } from "./Http";
 import { useHttp } from "./useHttp";
 import { CustomResponse, MswSettings } from "./http.types";
@@ -10,6 +10,7 @@ import {
   SwitchboardDefaults,
   SwitchboardConfig,
 } from "./switchboard.types";
+import { customResponseDefaults } from "./components/HttpCustomResponseForm";
 
 export {
   useSwitchboard,
