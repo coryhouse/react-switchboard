@@ -59,7 +59,7 @@ export function Switchboard({
   className,
   defaults,
 }: Readonly<SwitchboardProps>) {
-  const [isReady, setIsReady] = useState(false);
+  const [mswIsReady, setMswIsReady] = useState(!mswSettings);
   const { isOpen, setIsOpen, position, devToolsWindowRef } = useSwitchboard({
     openKeyboardShortcut,
     overriddenDefaults: defaults,
@@ -72,7 +72,7 @@ export function Switchboard({
     <>
       {/* Wrap app in ErrorBoundary so Switchboard continues to display even if the app errors */}
       <ErrorBoundary FallbackComponent={ErrorFallback ?? DefaultErrorFallback}>
-        {isReady ? appSlot : <p>Initializing msw...</p>}
+        {mswIsReady ? appSlot : <p>Initializing msw...</p>}
       </ErrorBoundary>
 
       <section
@@ -101,7 +101,7 @@ export function Switchboard({
             {mswSettings && (
               <Http
                 mswSettings={mswSettings}
-                setIsReady={() => setIsReady(true)}
+                setIsReady={() => setMswIsReady(true)}
               />
             )}
             <GeneralSettings />
