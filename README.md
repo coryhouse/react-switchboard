@@ -8,7 +8,7 @@ Quickly create custom DevTools for your React app.
 ## Quick Start
 
 ```
-npm install react-switchboard
+npm install react-switchboard -D
 ```
 
 Call `Switchboard` in your project root. Pass your app's main component to `Switchboard's` `appSlot` prop.
