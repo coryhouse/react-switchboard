@@ -24,7 +24,8 @@ interface KeyboardShortcut {
 }
 
 export interface SwitchboardMswSettings {
-  requestHandlers: RequestHandler[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  requestHandlers: (configRef: React.MutableRefObject<any>) => RequestHandler[];
 
   /** Optional Mock Service worker start options */
   startOptions?: StartOptions;
