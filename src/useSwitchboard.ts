@@ -46,7 +46,7 @@ export function useSwitchboard({
     defaults.closeViaEscapeKey
   );
 
-  const [position, setPosition] = useSwitchboardState<Position>(
+  const [position, setPosition] = useSwitchboardState(
     "sb-position",
     defaults.position
   );
