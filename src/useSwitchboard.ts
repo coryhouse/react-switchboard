@@ -14,6 +14,19 @@ interface KeyboardShortcut {
   ctrl?: boolean;
 }
 
+export interface GeneralSettings {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+  position: Position;
+  setPosition: (position: Position) => void;
+  openByDefault: boolean;
+  setOpenByDefault: (openByDefault: boolean) => void;
+  closeViaOutsideClick: boolean;
+  setCloseViaOutsideClick: (closeViaOutsideClick: boolean) => void;
+  closeViaEscapeKey: boolean;
+  setCloseViaEscapeKey: (closeViaEscapeKey: boolean) => void;
+}
+
 interface UseSwitchboardArgs {
   /** Override the built in setting defaults */
   overriddenDefaults?: Partial<SwitchboardDefaults>;
@@ -93,7 +106,7 @@ export function useSwitchboard({
     }
   }
 
-  return {
+  const generalSettings: GeneralSettings = {
     isOpen,
     setIsOpen,
     position,
@@ -104,6 +117,10 @@ export function useSwitchboard({
     setCloseViaOutsideClick,
     closeViaEscapeKey,
     setCloseViaEscapeKey,
+  };
+
+  return {
+    generalSettings,
     copySettingsUrlToClipboard,
     switchboardWindowRef,
   };
