@@ -81,7 +81,7 @@ export default function GeneralSettings() {
             className="sb-mr-2"
             onClick={() => {
               const switchboardKeys = getLocalStorageSwitchboardKeys();
-              // Remove each all Switchboard settings from localStorage and reload
+              // Remove Switchboard settings from localStorage and reload
               switchboardKeys.forEach((key) => localStorage.removeItem(key));
               window.location.reload();
             }}
