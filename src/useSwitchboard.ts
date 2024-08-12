@@ -50,7 +50,7 @@ export function useSwitchboard({
     overriddenDefaults?.position ?? "top-left"
   );
 
-  const devToolsWindowRef = useRef<HTMLDivElement>(null);
+  const switchboardWindowRef = useRef<HTMLDivElement>(null);
 
   useKeypress("Escape", () => {
     if (closeViaEscapeKey) setIsOpen(false);
@@ -62,7 +62,7 @@ export function useSwitchboard({
     setIsOpen((current) => !current);
   });
 
-  useOutsideClick(devToolsWindowRef, () => {
+  useOutsideClick(switchboardWindowRef, () => {
     if (closeViaOutsideClick) setIsOpen(false);
   });
 
@@ -105,6 +105,6 @@ export function useSwitchboard({
     closeViaEscapeKey,
     setCloseViaEscapeKey,
     copySettingsUrlToClipboard,
-    devToolsWindowRef,
+    switchboardWindowRef,
   };
 }
