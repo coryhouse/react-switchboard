@@ -43,7 +43,7 @@ function CustomSwitchboard() {
     useSwitchboard();
 
   // Use useSwitchboardState hook for custom settings.
-  const [user, setUser] = useSwitchboardState("user", null);
+  const [user, setUser] = useSwitchboardState("sb-user", null);
 
   return {
     /* Your custom JSX to render your desired UI */
