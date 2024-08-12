@@ -1,6 +1,6 @@
 {
   "name": "react-switchboard",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Quickly create custom DevTools for your React app",
   "scripts": {
     "prebuild": "tailwindcss -i ./src/input.css -o src/index.css",
