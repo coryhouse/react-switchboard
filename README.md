@@ -68,6 +68,8 @@ Use Switchboard to configure automated tests.
 - Configure automated test scenarios
 - Simulate incoming traffic and write conflicts
 
+More info in this 25 minute conference talk: [Creating Custom Dev Tools for Your React App at React Rally](https://www.youtube.com/live/DGG6xpllTiE?si=vq7z35p3V_2ce68H&t=24527)
+
 ## API
 
 ### Components
