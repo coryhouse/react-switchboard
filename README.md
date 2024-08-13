@@ -51,6 +51,23 @@ function CustomSwitchboard() {
 }
 ```
 
+## Why Switchboard?
+
+Code faster.
+Reproduce edge cases.
+Do real-time demos.
+Use Switchboard to configure automated tests.
+
+### Common Uses
+
+- Login / switch users instantly
+- Change feature toggles
+- Configure mock APIs
+- Force errors
+- Simulate network slowness for specific requests
+- Configure automated test scenarios
+- Simulate incoming traffic and write conflicts
+
 ## API
 
 ### Components
@@ -64,6 +81,7 @@ function CustomSwitchboard() {
 
 ## FAQ
 
+- **How does mocking work?** Switchboard intercepts fetch requests via [Mock Service Worker](https://mswjs.io/), and displays a UI for configuring the mock responses.
 - **Why does `Switchboard` render my app?** If you configure Switchboard to force the app to throw an error, Switchboard continues to render so you can change Switchboard's settings.
 
 - **Why lazy loading?** Lazy load `Switchboard` via `React.lazy` and `Suspense` so that it's excluded your app's prod bundle.
