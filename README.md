@@ -87,3 +87,7 @@ More info in this 25 minute conference talk: [Creating Custom Dev Tools for Your
 - **Why does `Switchboard` render my app?** If you configure Switchboard to force the app to throw an error, Switchboard continues to render so you can change Switchboard's settings.
 
 - **Why lazy loading?** Lazy load `Switchboard` via `React.lazy` and `Suspense` so that it's excluded your app's prod bundle.
+
+## Acknowledgements
+
+- [Mock Service Worker](https://mswjs.io/) - Used for mocking HTTP requests.
