@@ -23,20 +23,14 @@ import "react-switchboard/dist/index.css";
 const Switchboard = lazy(() => import("react-switchboard"));
 
 createRoot(document.getElementById("root")!).render(
-  import.meta.env.VITE_ENABLE_SWITCHBOARD === "Y" ? (
+  import.meta.env.PROD ? (
+    <App />
+  ) : (
     <Suspense fallback="Loading Switchboard...">
       <Switchboard appSlot={<App />} />
     </Suspense>
-  ) : (
-    <App />
   )
 );
-```
-
-Tweak Vite's dev npm script to set the environment variable:
-
-```bash
-"dev": "cross-env VITE_ENABLE_SWITCHBOARD=Y vite",
 ```
 
 ## Headless
@@ -93,6 +87,14 @@ More info in this 25 minute conference talk: [Creating Custom Dev Tools for Your
 - **Why does `Switchboard` render my app?** If you configure Switchboard to force the app to throw an error, Switchboard continues to render so you can change Switchboard's settings.
 
 - **Why lazy loading?** Lazy load `Switchboard` via `React.lazy` and `Suspense` so that it's excluded your app's prod bundle.
+
+- **How can I toggle Switchboard?** Use an environment variable to enable `Switchboard`. For example, tweak Vite's dev npm script to set an environment variable using [cross-env](https://www.npmjs.com/package/cross-env):
+
+```bash
+"dev": "cross-env VITE_ENABLE_SWITCHBOARD=Y vite",
+```
+
+Then, read this environment variable in your app's entry point.
 
 ## Acknowledgements
 
