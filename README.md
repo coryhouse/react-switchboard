@@ -11,9 +11,9 @@ Quickly create custom DevTools for your React app.
 npm install react-switchboard -D
 ```
 
-Call `Switchboard` in your project root. Pass your app's main component to `Switchboard's` `appSlot` prop.
-
 ### Vite Example
+
+Call `Switchboard` in your project root. Pass your app's main component to `Switchboard's` `appSlot` prop. Import `Switchboard` CSS. Lazy load `Switchboard` via an environment variable so it's excluded from your production bundle.
 
 ```tsx
 import { lazy } from "react";
@@ -23,7 +23,7 @@ import "react-switchboard/dist/index.css";
 const Switchboard = lazy(() => import("react-switchboard"));
 
 createRoot(document.getElementById("root")!).render(
-  import.meta.env.DEV ? (
+  import.meta.env.VITE_ENABLE_SWITCHBOARD === "Y" ? (
     <Suspense fallback="Loading Switchboard...">
       <Switchboard appSlot={<App />} />
     </Suspense>
@@ -31,6 +31,12 @@ createRoot(document.getElementById("root")!).render(
     <App />
   )
 );
+```
+
+Tweak Vite's dev npm script to set the environment variable:
+
+```bash
+"dev": "cross-env VITE_ENABLE_SWITCHBOARD=Y vite",
 ```
 
 ## Headless
@@ -88,6 +94,8 @@ More info in this 25 minute conference talk: [Creating Custom Dev Tools for Your
 
 - **Why lazy loading?** Lazy load `Switchboard` via `React.lazy` and `Suspense` so that it's excluded your app's prod bundle.
 
-## Acknowledgements
+## Acknowledgements / Inspiration
 
 - [Mock Service Worker](https://mswjs.io/) - Used for mocking HTTP requests.
+- [React Query Devtools](http://react-query.tanstack.com/devtools)
+- [https://github.com/dataarts/dat.gui](https://github.com/dataarts/dat.gui?tab=readme-ov-file)
