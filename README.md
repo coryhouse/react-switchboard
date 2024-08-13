@@ -94,8 +94,11 @@ More info in this 25 minute conference talk: [Creating Custom Dev Tools for Your
 
 - **Why lazy loading?** Lazy load `Switchboard` via `React.lazy` and `Suspense` so that it's excluded your app's prod bundle.
 
-## Acknowledgements / Inspiration
+## Acknowledgements
 
-- [Mock Service Worker](https://mswjs.io/) - Used for mocking HTTP requests.
+- [Mock Service Worker](https://mswjs.io/) - Switchboard mocks HTTP requests via msw.
+
+## Inspiration
+
 - [React Query Devtools](http://react-query.tanstack.com/devtools)
 - [https://github.com/dataarts/dat.gui](https://github.com/dataarts/dat.gui?tab=readme-ov-file)
