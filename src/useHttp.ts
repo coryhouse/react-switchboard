@@ -23,19 +23,14 @@ export function useHttp(
   const configRef = useRef(mswSettings);
 
   // Passing an empty ref since merely invoking here to get the array so we can display the list of handlers in DevTools.
-  const requestHandlers = mswSettings.requestHandlers(useRef());
+  const requestHandlers = mswSettings.requestHandlers();
 
   const [customResponses, setCustomResponses] = useSwitchboardState<
     CustomResponse[]
   >("sb-customResponses", []);
 
-  // Store mswSettings in a ref so the useEffect below that starts the worker runs only once, yet reads the latest config value as they change in the devtools.
   useEffect(() => {
-    configRef.current = mswSettings;
-  }, [mswSettings]);
-
-  useEffect(() => {
-    const worker = setupWorker(...mswSettings.requestHandlers(configRef));
+    const worker = setupWorker(...mswSettings.requestHandlers());
 
     const startWorker = async (worker: SetupWorker) => {
       await worker.start(mswSettings.startOptions);
