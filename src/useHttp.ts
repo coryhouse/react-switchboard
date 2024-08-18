@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useSwitchboardState } from "./useSwitchboardState";
 import { SetupWorker, setupWorker } from "msw/browser";
 import { CustomResponse } from "./http.types";
@@ -20,22 +20,12 @@ export function useHttp(
     httpDefaults.delay
   );
 
-  const configRef = useRef(mswSettings);
-
-  // Passing an empty ref since merely invoking here to get the array so we can display the list of handlers in DevTools.
-  const requestHandlers = mswSettings.requestHandlers(useRef());
-
   const [customResponses, setCustomResponses] = useSwitchboardState<
     CustomResponse[]
   >("sb-customResponses", []);
 
-  // Store mswSettings in a ref so the useEffect below that starts the worker runs only once, yet reads the latest config value as they change in the devtools.
   useEffect(() => {
-    configRef.current = mswSettings;
-  }, [mswSettings]);
-
-  useEffect(() => {
-    const worker = setupWorker(...mswSettings.requestHandlers(configRef));
+    const worker = setupWorker(...mswSettings.requestHandlers());
 
     const startWorker = async (worker: SetupWorker) => {
       await worker.start(mswSettings.startOptions);
@@ -49,7 +39,7 @@ export function useHttp(
     delay,
     setDelay,
     delayChanged,
-    requestHandlers,
+    requestHandlers: mswSettings.requestHandlers(),
     customResponses,
     setCustomResponses,
   };
