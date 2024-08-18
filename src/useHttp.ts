@@ -1,46 +1,26 @@
 import { useEffect } from "react";
-import { useSwitchboardState } from "./useSwitchboardState";
-import { SetupWorker, setupWorker } from "msw/browser";
-import { CustomResponse } from "./http.types";
+import { setupWorker } from "msw/browser";
 import { SwitchboardMswSettings } from "./Switchboard";
-
-export const httpDefaults = {
-  delay: 0,
-  status: 200,
-  response: undefined,
-};
 
 /** Configure msw */
 export function useHttp(
-  mswSettings: SwitchboardMswSettings,
-  setIsReady: () => void
+  setIsReady: () => void,
+  mswSettings?: SwitchboardMswSettings
 ) {
-  const [delay, setDelay, delayChanged] = useSwitchboardState(
-    "sb-delay",
-    httpDefaults.delay
-  );
-
-  const [customResponses, setCustomResponses] = useSwitchboardState<
-    CustomResponse[]
-  >("sb-customResponses", []);
-
   useEffect(() => {
-    const worker = setupWorker(...mswSettings.requestHandlers());
-
-    const startWorker = async (worker: SetupWorker) => {
+    if (!mswSettings) {
+      setIsReady();
+      return;
+    }
+    const setup = async () => {
+      const worker = setupWorker(...mswSettings.requestHandlers());
       await worker.start(mswSettings.startOptions);
       setIsReady();
     };
-
-    startWorker(worker);
+    setup();
   }, []);
 
   return {
-    delay,
-    setDelay,
-    delayChanged,
-    requestHandlers: mswSettings.requestHandlers(),
-    customResponses,
-    setCustomResponses,
+    requestHandlers: mswSettings?.requestHandlers(),
   };
 }

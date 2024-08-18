@@ -11,6 +11,7 @@ import { RequestHandler } from "msw";
 import { StartOptions } from "msw/browser";
 import "./index.css";
 import DefaultErrorFallback from "./ErrorFallback";
+import { useHttp } from "./useHttp";
 
 interface KeyboardShortcut {
   key: string | string[];
@@ -60,11 +61,17 @@ export function Switchboard({
   defaults,
 }: Readonly<SwitchboardProps>) {
   const [mswIsReady, setMswIsReady] = useState(!mswSettings);
-  const { generalSettings, switchboardWindowRef, copySettingsUrlToClipboard } =
-    useSwitchboard({
-      openKeyboardShortcut,
-      overriddenDefaults: defaults,
-    });
+  const {
+    generalSettings,
+    httpSettings,
+    switchboardWindowRef,
+    copySettingsUrlToClipboard,
+  } = useSwitchboard({
+    openKeyboardShortcut,
+    overriddenDefaults: defaults,
+  });
+
+  const { requestHandlers } = useHttp(() => setMswIsReady(true), mswSettings);
 
   const { isOpen, setIsOpen, position } = generalSettings;
 
@@ -101,10 +108,10 @@ export function Switchboard({
             />
             {children}
 
-            {mswSettings && (
+            {requestHandlers && requestHandlers.length > 0 && (
               <Http
-                mswSettings={mswSettings}
-                setIsReady={() => setMswIsReady(true)}
+                httpSettings={httpSettings}
+                requestHandlers={requestHandlers}
               />
             )}
             <GeneralSettings
