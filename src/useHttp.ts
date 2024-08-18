@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useSwitchboardState } from "./useSwitchboardState";
 import { SetupWorker, setupWorker } from "msw/browser";
 import { CustomResponse } from "./http.types";
@@ -20,11 +20,6 @@ export function useHttp(
     httpDefaults.delay
   );
 
-  const configRef = useRef(mswSettings);
-
-  // Passing an empty ref since merely invoking here to get the array so we can display the list of handlers in DevTools.
-  const requestHandlers = mswSettings.requestHandlers();
-
   const [customResponses, setCustomResponses] = useSwitchboardState<
     CustomResponse[]
   >("sb-customResponses", []);
@@ -44,7 +39,7 @@ export function useHttp(
     delay,
     setDelay,
     delayChanged,
-    requestHandlers,
+    requestHandlers: mswSettings.requestHandlers(),
     customResponses,
     setCustomResponses,
   };
