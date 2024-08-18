@@ -10,7 +10,7 @@ type HttpProps = {
   setIsReady: () => void;
 };
 
-export function Http({ mswSettings, setIsReady }: HttpProps) {
+export function Http({ mswSettings, setIsReady }: Readonly<HttpProps>) {
   const {
     delay,
     setDelay,
